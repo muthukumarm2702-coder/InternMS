@@ -1,0 +1,291 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.admin-registration-main{
+    display: flex;
+}
+.admin-registration-container{
+    width: 40%;
+    background: linear-gradient(to top, #16224B, #26569F);
+    color: white;
+    padding: 70px 70px;
+}
+.admin-left-content{
+       margin-top: 40px;
+       color:white;
+        margin-top: 30px;
+
+}
+.admin-left-content h1{
+    margin-top: 80px;
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom:20px;
+    color: #FFFFFF;
+
+}
+.admin-left-content p{
+   font-weight: 200;
+    font-size: 16px;
+    line-height: 22px;
+    color:#ffffffaf;
+}
+.admin-left-content img{
+    width: 350px;
+    height: 350px;
+    border-radius: 12px;
+    padding: 18px;                      
+}
+.admin-image img{
+    padding: 20px;
+    margin: 10px solid rgb(15, 15, 223);
+
+}
+.admin-image-content{
+    display: flex;
+    margin-top: 50px; 
+     gap:16px;  
+}
+.admin-image-content img{
+              width:35px;
+              height:30px;
+}
+.admin-image-content h6{
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: 300;
+    color: #FFFFFF;
+}
+.admin-image-content p{
+    font-size: 12px;
+    font-weight: 200;
+    color:#ffffffc6;
+}
+
+
+
+.admin-right-container{
+    width:60%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+    padding:40px;
+}
+
+.admin-register-card{
+    width:100%;
+    max-width:720px;
+}
+
+.admin-register-card h1{
+    font-size:34px;
+    margin-bottom:8px;
+    color:#1F2937;
+}
+
+.admin-subtitle{
+    color:#6B7280;
+    font-size:14px;
+    margin-bottom:28px;
+}
+
+.register-label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.register-label span{
+    color:red;
+}
+
+.register-type{
+    display:flex;
+    margin-bottom:25px;
+}
+
+.register-box{
+    width:95px;
+    height:82px;
+    border:1px solid #D8DAE5;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.register-box.active{
+    background:#DCEEFF;
+    border-color:#76B7FF;
+}
+
+.register-box img{
+    width:24px;
+    margin-bottom:8px;
+}
+
+.register-box p{
+    font-size:14px;
+}
+
+.admin-form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:18px;
+}
+
+.admin-input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.admin-input-group label{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.admin-input-group label span{
+    color:red;
+}
+
+.admin-input-group input,
+.admin-input-group select{
+    width:100%;
+    height:48px;
+    border:1px solid #D8DAE5;
+    border-radius:8px;
+    padding:0 14px;
+    outline:none;
+    font-size:14px;
+}
+
+.admin-input-group input:focus,
+.admin-input-group select:focus{
+    border-color:#4338CA;
+}
+
+.phone-box{
+    display:flex;
+    gap:8px;
+}
+
+.phone-box select{
+    width:75px;
+}
+
+.phone-box input{
+    flex:1;
+}
+
+.password-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #D8DAE5;
+    border-radius:8px;
+    padding:0 14px;
+    height:48px;
+}
+
+.password-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:14px;
+}
+
+.eye-icon{
+    width:14px;
+    height:14px;
+    cursor:pointer;
+}
+
+.admin-terms-box{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:20px 0;
+}
+
+
+.admin-terms-box p{
+    font-size:13px;
+    color:#6B7280;
+}
+
+.admin-terms-box span{
+    color:#4338CA;
+    font-weight:600;
+}
+
+.create-account-btn{
+    width:100%;
+    height:50px;
+    border:none;
+    border-radius:8px;
+    background:#4338CA;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.create-account-btn:hover{
+    background:#352cb3;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:28px 0;
+}
+
+.divider span{
+    flex:1;
+    height:1px;
+    background:#D8DAE5;
+}
+
+.divider p{
+    font-size:12px;
+    color:#6B7280;
+}
+
+.signin-text{
+    text-align:center;
+    color:#6B7280;
+    font-size:14px;
+}
+
+.signin-text span{
+    color:#4338CA;
+    cursor:pointer;
+    font-weight:600;
+}
+.error{
+    color:#e53935;
+    font-size:12px;
+    margin-top:5px;
+    font-weight:500;
+}
+
+.admin-nav{
+ display: flex;
+ justify-content: space-between;
+ padding: 20px;
+ background-color: #F0F3FF;
+ color:#464555 ;
+}
+
+.nav-links a{
+  text-decoration: none;
+  margin-right: 20px;
+  color: #464555;
+}

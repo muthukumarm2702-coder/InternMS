@@ -1,0 +1,414 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.company-main{
+    display: flex;
+
+}
+
+.company-left-container{
+    background: linear-gradient(to bottom , #467EE5,#1B2F4C);
+    width: 40%;
+    color: white;
+    padding: 40px;
+}
+
+.align-img{
+    display: flex;
+}
+
+.company-left-container h1{
+     font-size: 32px;
+     font-weight: 300;
+     margin-top: 70px;
+}
+
+.company-left-container p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #DAD7FF;
+    margin-top: 20px;
+
+}
+.align-img{
+    margin-top: 40px;
+}
+
+.align-img span{
+    font-size: 12px;
+    color: #DAD7FF;
+}
+
+.align-img img{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+
+.patrnerimg{
+    width: 350px;
+    padding: 30px;
+    margin-left: 20px;
+}
+
+.company-right-container{
+    width: 60%;
+    padding: 40px 80px;
+}
+
+
+
+.company-form-container h1{
+    font-size: 32px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 10px;
+}
+
+.company-subtitle{
+    font-size: 16px;
+    color: #6B7280;
+    margin-bottom: 40px;
+}
+
+.register-type{
+    display: flex;
+    margin-left: 40px;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.register-box{
+    width: 95px;
+    height: 82px;
+    border: 1px solid #D8DAE5;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    background: #fff;
+}
+
+.register-box img{
+    width: 22px;
+    height: 22px;
+    margin-bottom: 10px;
+}
+
+.register-box p{
+    font-size: 14px;
+    color: #1F2937;
+}
+
+.register-box.active{
+    background: #DCEEFF;
+    border-color: #76B7FF;
+}
+
+
+.form-row{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.form-group{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label{
+    font-size: 14px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 10px;
+}
+
+.form-group input{
+    width: 100%;
+    height: 45px;
+    border: 1.5px solid #D6D6E7;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #374151;
+    outline: none;
+    background: #fff;
+}
+.form-group select{
+    width: 100%;
+    height: 45px;
+    
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #374151;
+    outline: none;
+    background: #fff;
+}
+
+.form-group input::placeholder{
+    color: #9CA3AF;
+}
+
+.full-width{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.phone-input{
+    display: flex;
+    gap: 10px;
+}
+
+.country-code{
+    width: 70px !important;
+    text-align: center;
+    padding: 0 !important;
+}
+
+.company-box,
+.password-box{
+    width: 100%;
+    height: 48px;
+    border: 1px solid #D8DAE5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+}
+
+.company-box img{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.company-box input,
+.password-box input{
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.password-box img{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+.checkbox-row{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0 35px;
+}
+
+.checkbox-row input{
+    width: 14px;
+    height: 14px;
+}
+
+.checkbox-row p{
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.checkbox-row span{
+    color: #4338CA;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.company-register-btn{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    background: #4338CA;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.company-register-btn:hover{
+    background: #372FC2;
+}
+
+.login-link{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 15px;
+    color: #4B5563;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 10px;
+}
+
+.login-link span{
+    color: #4338CA;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.status-bar{
+   display: flex;
+   justify-content: space-between;
+   gap: 40px;
+  
+}
+.status-bar-link{
+     display: flex;
+   justify-content: space-between;
+   padding: 20px 30px;
+   background: #ffff;
+
+}
+.status-bar-link a{
+    text-decoration: none;
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.company-footer{
+    width:100%;
+    background:#DEE8FF;
+    padding:40px 60px 25px;
+}
+
+.company-footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.company-footer-about{
+    width:340px;
+}
+
+.company-footer-about h3{
+    color:#4F46E5;
+    font-size:24px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.company-footer-about p{
+    color:#5F6475;
+    font-size:15px;
+    line-height:28px;
+}
+
+.company-footer-column h4{
+    color:#1F2937;
+    font-size:18px;
+    margin-bottom:18px;
+}
+
+.company-footer-column p{
+    color:#5F6475;
+    font-size:15px;
+    margin-bottom:14px;
+    cursor:pointer;
+}
+
+.company-footer hr{
+    margin:35px 0 25px;
+    border:none;
+    border-top:1px solid #D7DCE8;
+}
+
+.company-footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.company-footer-bottom p{
+    color:#5F6475;
+    font-size:14px;
+}
+
+.company-footer-icons{
+    display:flex;
+    gap:18px;
+}
+
+.company-footer-icons img{
+    width:22px;
+    height:22px;
+    cursor:pointer;
+}
+ 
+@media(max-width:768px){
+
+    .footer{
+        padding:30px 20px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+        gap:30px;
+    }
+
+    .footer-about{
+        width:100%;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:20px;
+    }
+}
+
+
+
+
+@media(max-width:992px){
+
+    .company-right-container{
+        width:100%;
+        height:auto;
+        padding:30px 20px;
+    }
+
+    .company-form-container h1{
+        font-size:36px;
+    }
+
+    .company-subtitle{
+        font-size:18px;
+    }
+
+    .role-selection{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .role-card{
+        width:140px;
+    }
+
+    .form-row{
+        flex-direction:column;
+        gap:20px;
+    }
+
+}
