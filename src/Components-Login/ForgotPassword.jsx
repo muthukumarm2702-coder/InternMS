@@ -82,7 +82,7 @@ export const ForgotPassword=() => {
           </div>
         </div>
 
-        <button className="verify-btn" onClick={() => navigate("/forgotpasswordOtp")}>
+        <button className="verify-btn" onClick={() => navigate("/forgot-password/verify")}>
           Send Verification Code
           <img src={arrow} alt="" />
         </button>

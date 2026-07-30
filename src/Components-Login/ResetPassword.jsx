@@ -42,7 +42,7 @@ const [error, setError] = useState("");
   }
 
   setError("");
-  navigate("/ResetPasswordSuccess");
+  navigate("/reset-password/success");
 };
 
   return (

@@ -42,7 +42,7 @@ const handleVerify = () => {
   }
 
   alert("OTP Verified");
-   navigate("/resetpassword");
+   navigate("/reset-password");
 };
 
 

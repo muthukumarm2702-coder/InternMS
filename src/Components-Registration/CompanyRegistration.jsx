@@ -118,8 +118,6 @@ const handleSubmit = (e) => {
   if (validate()) {
     alert("Company Registered Successfully!");
 
-    console.log(formData);
-
     setFormData({
       companyName: "",
       website: "",
@@ -179,22 +177,22 @@ const handleSubmit = (e) => {
 
     <div className="register-type">
 
-      <div className="register-box" onClick={() => navigate("/HRregistration")}>
+      <div className="register-box" onClick={() => navigate("/register/hr")}>
         <img src={hr} alt="HR" />
         <p>HR</p>
       </div>
 
-      <div className="register-box"  onClick={() => navigate("/MentorRegistration")}>
+      <div className="register-box"  onClick={() => navigate("/register/mentor")}>
         <img src={mentor} alt="Mentor" />
         <p>Mentor</p>
       </div>
 
-      <div className="register-box" onClick={()=>navigate("/InternRegistration")}>
+      <div className="register-box" onClick={()=>navigate("/register/intern")}>
         <img src={intern} alt="Intern" />
         <p>Intern</p>
       </div>
 
-      <div className="register-box active"  onClick={() => navigate("/CompanyRegistration")}>
+      <div className="register-box active"  onClick={() => navigate("/register/company")}>
         <img src={company} alt="Company" />
         <p>Company</p>
       </div>

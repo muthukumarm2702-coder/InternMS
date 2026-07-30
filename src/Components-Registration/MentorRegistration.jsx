@@ -199,7 +199,7 @@ else if (form.confirmPassword !== form.password) {
 
     <div className="register-type">
 
-      <div className="register-box" onClick={() => navigate("/HRregistration")}>
+      <div className="register-box" onClick={() => navigate("/register/hr")}>
         <img src={hr} alt="" />
         <p>HR</p>
       </div>
@@ -209,12 +209,12 @@ else if (form.confirmPassword !== form.password) {
         <p>Mentor</p>
       </div>
 
-      <div className="register-box" onClick={() => navigate("/InternRegistration")}>
+      <div className="register-box" onClick={() => navigate("/register/intern")}>
         <img src={intern} alt="" />
         <p>Intern</p>
       </div>
 
-      <div className="register-box" onClick={() => navigate("/CompanyRegistration")}>
+      <div className="register-box" onClick={() => navigate("/register/company")}>
         <img src={company} alt="" />
         <p>Company</p>
       </div>

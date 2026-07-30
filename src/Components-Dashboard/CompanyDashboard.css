@@ -8,6 +8,11 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+.dash-root button,
+.dash-root input {
+  font: inherit;
+}
+
 @media (min-width: 901px) {
   html:has(.dash-root),
   body:has(.dash-root),
@@ -98,13 +103,6 @@
   background: #0B1C30;
 }
 
-.sidebar-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.25);
-  margin-bottom: 1px;
-}
-
 .dash-nav {
   display: flex;
   flex-direction: column;
@@ -119,7 +117,6 @@
   border: none;
   background: none;
   color: #C9D6F0;
-  font-family: inherit;
   font-size: 14px;
   font-weight: 500;
   padding: 7px 12px;
@@ -160,12 +157,12 @@
 }
 
 .nav-label {
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1;
-  letter-spacing: 0;
-  white-space: nowrap;
-  color: #FFFFFF;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    white-space: nowrap;
+    color: #FFFFFF;
 }
 
 .dash-main {
@@ -194,7 +191,7 @@
 }
 
 .dash-welcome h1 {
-  font-style: normal;
+  font-style: bold;
   font-size: 14px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -381,7 +378,6 @@
 }
 
 .card-link {
-  font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
@@ -431,7 +427,6 @@
 }
 
 .dstat-label {
-  font-family: Inter;
   font-weight: 500;
   font-size: 11px;
   line-height: 100%;
@@ -440,7 +435,6 @@
 }
 
 .dstat-value {
-  font-family: Inter;
   font-weight: 700;
   font-size: 22px;
   line-height: 100%;
@@ -449,17 +443,23 @@
 }
 
 .dstat-delta {
-  font-family: Inter;
   font-weight: 500;
   font-size: 10px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #334155;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .dstat-change {
-  color: #16a36a;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: #078c50;
+  font-weight: 500;
 }
 
 .dstat-context {
@@ -467,7 +467,6 @@
 }
 
 .dstat-delta-muted {
-  font-family: Inter;
   font-weight: 500;
   font-size: 10px;
   line-height: 100%;
@@ -505,7 +504,6 @@
 
 .chart-card-header h3 {
   margin: 0;
-  font-family: Inter;
   font-weight: 700;
   font-size: 11px;
   line-height: 100%;
@@ -514,7 +512,6 @@
 }
 
 .month-pill {
-  font-family: Inter;
   font-weight: 500;
   font-size: 10px;
   line-height: 100%;
@@ -528,7 +525,6 @@
   padding: 4px 9px;
   color: #51607F;
   cursor: pointer;
-  font-family: inherit;
 }
 
 .month-pill img {
@@ -545,73 +541,48 @@
 }
 
 .donut-chart-wrap {
-  --donut-size: 120px;
-  --donut-hole: 72px;
-  width: var(--donut-size);
-  height: var(--donut-size);
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-  cursor: default;
-  animation: donut-fade-in 900ms ease-out both;
-  will-change: opacity;
-}
-
-.donut-svg {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.donut-segment {
-  cursor: pointer;
-  transition: filter 150ms ease, opacity 150ms ease;
-}
-
-.donut-segment:hover {
-  filter: brightness(1.035);
-}
-
-@keyframes donut-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.donut-chart-wrap::after {
-  content: "";
-  position: absolute;
-  width: var(--donut-hole);
-  height: var(--donut-hole);
-  border-radius: 50%;
-  background: #ffffff;
 }
 
 .donut-center {
   position: absolute;
   inset: 0;
   z-index: 1;
-  width: var(--donut-hole);
-  height: var(--donut-hole);
+  width: 72px;
+  height: 72px;
   margin: auto;
   pointer-events: none;
   border-radius: 50%;
-  background: transparent;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.donut-chart-wrap .recharts-tooltip-wrapper {
+  z-index: 10;
+}
+
+.donut-chart-wrap .recharts-pie-sector path {
+  cursor: pointer;
+  transition: filter 180ms ease, opacity 180ms ease;
+}
+
+.donut-chart-wrap .recharts-pie-sector path:hover {
+  filter: brightness(1.06) drop-shadow(0 2px 3px rgba(15, 30, 60, 0.14));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .donut-chart-wrap .recharts-pie-sector path {
+    transition: none;
+  }
 }
 
 .donut-center strong {
@@ -626,63 +597,6 @@
   color: #9AA4B8;
   font-weight: 700;
   letter-spacing: 0.05em;
-}
-
-.donut-tooltip {
-  position: absolute;
-  z-index: 20;
-  left: 50%;
-  bottom: calc(100% + 8px);
-  display: grid;
-  grid-template-columns: 8px max-content max-content;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 9px;
-  border: 1px solid #E2E8F0;
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
-  color: #0F172A;
-  font-size: 9px;
-  line-height: 1;
-  white-space: nowrap;
-  pointer-events: none;
-  transform: translateX(-50%);
-}
-
-.donut-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  border-right: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
-  background: #ffffff;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.donut-tooltip-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.donut-tooltip-label {
-  font-weight: 500;
-}
-
-.donut-tooltip strong {
-  font-size: 9px;
-  font-weight: 700;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .donut-chart-wrap {
-    animation: none;
-    transition: none;
-  }
 }
 
 .donut-legend {
@@ -712,7 +626,6 @@
 }
 
 .legend-label {
-  font-family: Inter;
   font-weight: 600;
   font-size: 8.5px;
   line-height: 100%;
@@ -722,7 +635,6 @@
 }
 
 .legend-value {
-  font-family: Inter;
   font-weight: 600;
   font-size: 8.5px;
   line-height: 100%;
@@ -749,11 +661,11 @@
   grid-template-rows: auto minmax(0, 1fr);
   min-width: 0;
   min-height: 0;
-  padding: 0 2px;
 }
 
 .line-legend {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   align-items: center;
   min-height: 12px;
@@ -761,19 +673,23 @@
   margin-bottom: 8px;
 }
 
-.line-legend span {
-  font-family: Inter;
+.line-legend button {
   font-weight: 400;
   font-size: 9px;
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
   color: #000000;
+  cursor: pointer;
+  transition: opacity 160ms ease;
 }
 
-.line-legend span::before {
+.line-legend button::before {
   content: "";
   width: 18px;
   height: 3px;
@@ -781,11 +697,11 @@
 }
 
 .line-legend .legend-active::before {
-  background: #2F6FED;
+  background: #3B6FF0;
 }
 
 .line-legend .legend-completed::before {
-  background: #2DBA98;
+  background: #1FB786;
 }
 
 .line-chart-block {
@@ -793,13 +709,6 @@
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-}
-
-@media (min-width: 1201px) {
-  .line-chart-block {
-    height: 120px;
-    min-height: 120px;
-  }
 }
 
 .bottom-row {
@@ -828,18 +737,6 @@
   padding: 12px 10px;
 }
 
-.upcoming-events .panel-header h3 {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.upcoming-events .panel-header a {
-  font-size: 9px;
-  font-weight: 600;
-  line-height: 1;
-}
-
 .panel-header {
   display: flex;
   align-items: center;
@@ -849,7 +746,6 @@
 
 .panel-header h3 {
   margin: 0;
-  font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
@@ -858,7 +754,6 @@
 }
 
 .panel-header a {
-  font-family: Inter;
   font-weight: 700;
   font-size: 10px;
   line-height: 100%;
@@ -878,7 +773,6 @@
 }
 
 .applications-table th {
-  font-family: Inter;
   font-weight: 500;
   font-size: 9px;
   line-height: 100%;
@@ -948,7 +842,6 @@
 }
 
 .event-month {
-  font-family: Inter;
   font-weight: 700;
   font-size: 7px;
   line-height: 100%;
@@ -957,7 +850,6 @@
 }
 
 .event-day {
-  font-family: Inter;
   font-weight: 700;
   font-size: 8px;
   line-height: 100%;
@@ -973,7 +865,6 @@
 }
 
 .event-info strong {
-  font-family: Inter;
   font-weight: 600;
   font-size: 9px;
   line-height: 1.2;
@@ -985,7 +876,6 @@
 }
 
 .event-info span {
-  font-family: Inter;
   font-weight: 400;
   font-size: 7px;
   line-height: 1.25;
@@ -1032,7 +922,6 @@
   min-height: 0;
   padding: 7px 3px;
   cursor: pointer;
-  font-family: inherit;
   transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
@@ -1047,14 +936,12 @@
   outline-offset: 2px;
 }
 
-.quick-action-btn img,
-.quick-action-btn svg {
+.quick-action-btn img {
   width: 24px;
   height: 24px;
 }
 
 .quick-action-btn span {
-  font-family: Inter;
   font-weight: 500;
   font-size: 8px;
   line-height: 100%;
@@ -1075,7 +962,6 @@
 
 .performance-title {
   margin: 0 0 10px;
-  font-family: Inter;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
@@ -1132,7 +1018,6 @@
 }
 
 .performance-label {
-  font-family: Inter;
   font-weight: 500;
   font-size: 12px;
   line-height: 100%;
@@ -1142,7 +1027,6 @@
 }
 
 .performance-value {
-  font-family: Inter;
   font-weight: 700;
   font-size: 24px;
   line-height: 100%;
@@ -1151,7 +1035,6 @@
 }
 
 .performance-suffix {
-  font-family: Inter;
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
@@ -1161,13 +1044,26 @@
 }
 
 .performance-delta {
-  font-family: Inter;
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #334155;
   white-space: nowrap;
+}
+
+.line-legend button:hover {
+  opacity: 0.72;
+}
+
+.line-legend button:focus-visible {
+  outline: 2px solid #93b4ff;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.line-legend .legend-series-muted {
+  opacity: 0.3;
 }
 
 .performance-change {
@@ -1178,6 +1074,18 @@
   color: #ef4444;
 }
 
+.trend-arrow {
+  display: block;
+  width: 7px;
+  height: 11px;
+  flex: 0 0 7px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
 .performance-context {
   color: #334155;
 }
@@ -1185,133 +1093,68 @@
 @media (min-width: 1201px) {
   .dash-main {
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
 
   .dash-content {
-    display: grid;
-    grid-template-rows: 108px minmax(220px, 245px) 200px 126px;
-    align-content: start;
-    height: calc(100vh - 63px);
-    padding: 12px 23px 16px 19px;
-    gap: 12px;
-    overflow: hidden;
+    display: flex;
+    height: auto;
+    min-height: calc(100vh - 63px);
+    padding: 24px 23px 0;
+    gap: 14px;
+    overflow: visible;
   }
 
-  .stat-cards-row,
-  .charts-row,
-  .bottom-row,
-  .performance-row {
-    min-height: 0;
+  .dash-content::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    flex: 0 0 2px;
   }
 
-  .dstat-card,
-  .chart-card,
-  .panel-card,
-  .performance-row {
-    height: 100%;
+  .stat-cards-row {
+    min-height: 108px;
+  }
+
+  .dstat-card {
+    height: 108px;
+    min-height: 108px;
   }
 
   .charts-row {
+    min-height: 245px;
     margin-top: 0;
   }
-}
 
-@media (min-width: 1201px) and (max-height: 800px) {
-  .dash-content {
-    grid-template-rows: 108px minmax(180px, 1fr) 190px 100px;
-    gap: 12px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .chart-card {
+    height: 245px;
+    min-height: 245px;
+  }
+
+  .line-chart-block {
+    height: 120px;
+    min-height: 120px;
+  }
+
+  .bottom-row {
+    min-height: 200px;
   }
 
   .panel-card {
-    padding: 10px 12px;
-  }
-
-  .upcoming-events,
-  .quick-actions {
-    padding: 10px;
-  }
-
-  .upcoming-events .panel-header,
-  .quick-actions .panel-header {
-    margin-bottom: 6px;
-  }
-
-  .events-list {
-    gap: 3px;
-  }
-
-  .events-list li {
-    grid-template-columns: 24px minmax(0, 1fr) auto;
-  }
-
-  .event-date {
-    width: 24px;
-    height: 24px;
-  }
-
-  .recent-applications .card-link,
-  .upcoming-events .card-link {
-    margin-top: auto;
-    padding-top: 4px;
-  }
-
-  .quick-actions-grid {
-    gap: 6px;
-  }
-
-  .quick-action-btn {
-    gap: 3px;
-    padding: 4px 2px;
-  }
-
-  .quick-action-btn img,
-  .quick-action-btn svg {
-    width: 21px;
-    height: 21px;
-  }
-
-  .quick-action-btn span {
-    font-size: 7px;
+    height: 200px;
+    min-height: 200px;
   }
 
   .performance-row {
-    padding: 10px 14px 12px;
-  }
-
-  .performance-title {
-    margin-bottom: 8px;
-    font-size: 11px;
+    height: 126px;
+    min-height: 126px;
   }
 
   .performance-item {
-    gap: 9px;
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-
-  .performance-icon-wrap {
-    width: 38px;
-    height: 38px;
-  }
-
-  .performance-icon-img {
-    width: 22px;
-    height: 22px;
-  }
-
-  .performance-label {
-    font-size: 11px;
-  }
-
-  .performance-value {
-    font-size: 22px;
-  }
-
-  .performance-delta {
-    font-size: 9px;
+    padding: 0 16px;
   }
 }
 
@@ -1518,5 +1361,5 @@
 
 .dash-root,
 .dash-root * {
-  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif !important;
+  box-sizing: border-box;
 }

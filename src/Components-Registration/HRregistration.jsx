@@ -144,25 +144,25 @@ const handleSubmit = (e) => {
 
     <div className="register-type">
 
-      <div className="register-box active" onClick={() => navigate("/HRregistration")}>       
+      <div className="register-box active" onClick={() => navigate("/register/hr")}>
         <img src={hr} alt="HR" />
         <p>HR</p>
       </div>
 
       <div className="register-box"
-         onClick={() => navigate("/MentorRegistration")}>
+         onClick={() => navigate("/register/mentor")}>
         <img src={mentor} alt="Mentor" />
         <p>Mentor</p>
       </div>
 
       <div className="register-box"
-      onClick={()=> navigate("/InternRegistration")}>
+      onClick={()=> navigate("/register/intern")}>
         <img src={intern} alt="Intern" />
         <p>Intern</p>
       </div>
 
       <div className="register-box"
-      onClick={() => navigate("/CompanyRegistration")}>
+      onClick={() => navigate("/register/company")}>
         <img src={company} alt="Company" />
         <p>Company</p>
       </div>

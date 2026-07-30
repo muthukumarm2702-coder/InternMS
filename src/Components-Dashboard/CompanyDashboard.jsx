@@ -1,69 +1,73 @@
 import { useState } from 'react'
 import {
+  Cell,
   Line,
   LineChart,
+  Pie,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import "./CompanyDashboard.css";
+
 import internsIcon from '../assets/dashboard/interns.png'
 import reportsIcon from '../assets/dashboard/reports.png'
 import addInternIcon from '../assets/dashboard/add-intern.png'
-import appsIcon from '../assets/dashboard/applications.png'
-import docsIcon from '../assets/dashboard/documents.png'
+import applicationsIcon from '../assets/dashboard/applications.png'
+import documentsIcon from '../assets/dashboard/documents.png'
 import internshipsIcon from '../assets/dashboard/internships.png'
-import arrowIcon from '../assets/dashboard/arrow-right.png'
-import filterIcon from '../assets/dashboard/filter-chevron.png'
-import appsBadge from '../assets/dashboard/applications-stat.png'
-import deptBadge from '../assets/dashboard/departments-stat.png'
-import completedBadge from '../assets/dashboard/completed-stat.png'
-import activeBadge from '../assets/dashboard/active-stat.png'
-import internsBadge from '../assets/dashboard/interns-stat.png'
+import arrowRightIcon from '../assets/dashboard/arrow-right.png'
+import filterArrowIcon from '../assets/dashboard/filter-arrow.png'
+import applicationsStatIcon from '../assets/dashboard/stat-applications.png'
+import departmentsStatIcon from '../assets/dashboard/stat-departments.png'
+import completedStatIcon from '../assets/dashboard/stat-completed.png'
+import activeStatIcon from '../assets/dashboard/stat-active.png'
+import internsStatIcon from '../assets/dashboard/stat-interns.png'
 import searchIcon from '../assets/dashboard/search.png'
-import menuChevron from '../assets/dashboard/menu-chevron.png'
-import activeMenuBg from '../assets/dashboard/active-menu.png'
-import cyanBadgeBg from '../assets/dashboard/conversion-bg.png'
-import purpleBadgeBg from '../assets/dashboard/completion-bg.png'
-import greenBadgeBg from '../assets/dashboard/satisfaction-bg.png'
-import blueBadgeBg from '../assets/dashboard/rating-bg.png'
+import menuArrowIcon from '../assets/dashboard/menu-arrow.png'
+import activeNavImage from '../assets/dashboard/nav-active.png'
+import conversionBg from '../assets/dashboard/bg-conversion.png'
+import completionBg from '../assets/dashboard/bg-completion.png'
+import satisfactionBg from '../assets/dashboard/bg-satisfaction.png'
+import ratingBg from '../assets/dashboard/bg-rating.png'
 import companyIcon from '../assets/dashboard/company.png'
 import homeIcon from '../assets/dashboard/home.png'
 import mentorsIcon from '../assets/dashboard/mentors.png'
-import deptIcon from '../assets/dashboard/departments.png'
+import departmentsIcon from '../assets/dashboard/departments.png'
 import tasksIcon from '../assets/dashboard/tasks.png'
 import messagesIcon from '../assets/dashboard/messages.png'
 import calendarIcon from '../assets/dashboard/calendar.png'
 import settingsIcon from '../assets/dashboard/settings.png'
-import trendIcon from '../assets/dashboard/rating.png'
-import checkIcon from '../assets/dashboard/satisfaction.png'
-import starIcon from '../assets/dashboard/completion.png'
-import clockIcon from '../assets/dashboard/duration.png'
-import medalIcon from '../assets/dashboard/conversion.png'
+import ratingIcon from '../assets/dashboard/rating.png'
+import satisfactionIcon from '../assets/dashboard/satisfaction.png'
+import completionIcon from '../assets/dashboard/completion.png'
+import durationIcon from '../assets/dashboard/duration.png'
+import conversionIcon from '../assets/dashboard/conversion.png'
 import megaphoneIcon from '../assets/dashboard/megaphone.png'
 
 const NAV_ITEMS = [
   { key: 'dashboard', label: 'Dashboard', src: homeIcon },
   { key: 'internships', label: 'Internships', src: internshipsIcon },
-  { key: 'applications', label: 'Applications', src: appsIcon },
+  { key: 'applications', label: 'Applications', src: applicationsIcon },
   { key: 'interns', label: 'Interns', src: internsIcon },
   { key: 'mentors', label: 'Mentors', src: mentorsIcon },
-  { key: 'departments', label: 'Departments', src: deptIcon },
+  { key: 'departments', label: 'Departments', src: departmentsIcon },
   { key: 'tasks', label: 'Task & Evaluations', src: tasksIcon },
   { key: 'reports', label: 'Reports & Analytics', src: reportsIcon },
   { key: 'messages', label: 'Messages', src: messagesIcon },
   { key: 'calendar', label: 'Calendar', src: calendarIcon },
-  { key: 'documents', label: 'Documents', src: docsIcon },
+  { key: 'documents', label: 'Documents', src: documentsIcon },
   { key: 'settings', label: 'Settings', src: settingsIcon },
 ]
 
 const STAT_CARDS = [
-  { label: 'Total Interns', value: '128', delta: '18%', badge: internsBadge },
-  { label: 'New Applications', value: '56', delta: '12%', badge: appsBadge },
-  { label: 'Active Internships', value: '96', delta: '16%', badge: activeBadge },
-  { label: 'Completed Internships', value: '32', delta: '23%', badge: completedBadge },
-  { label: 'Departments', value: '8', delta: 'Total departments', badge: deptBadge, noDelta: true },
+  { label: 'Total Interns', value: '128', delta: '18%', badge: internsStatIcon },
+  { label: 'New Applications', value: '56', delta: '12%', badge: applicationsStatIcon },
+  { label: 'Active Internships', value: '96', delta: '16%', badge: activeStatIcon },
+  { label: 'Completed Internships', value: '32', delta: '23%', badge: completedStatIcon },
+  { label: 'Departments', value: '8', delta: 'Total departments', badge: departmentsStatIcon, noDelta: true },
 ]
 
 const APPLICATION_SEGMENTS = [
@@ -112,24 +116,20 @@ const QUICK_ACTIONS = [
   { label: 'Assign Mentor', src: internsIcon },
   { label: 'Generate Reports', src: reportsIcon },
   { label: 'Send Announcement', src: megaphoneIcon },
-  { label: 'Upload Document', src: docsIcon },
+  { label: 'Upload Document', src: documentsIcon },
 ]
 
 const PERFORMANCE_ITEMS = [
-  { label: 'Average Rating', value: '4.5', suffix: '/5', delta: '10%', bg: blueBadgeBg, icon: trendIcon },
-  { label: 'Intern Satisfaction', value: '92%', delta: '8%', bg: greenBadgeBg, icon: checkIcon },
-  { label: 'Task Completion Rate', value: '88%', delta: '18%', bg: purpleBadgeBg, icon: starIcon },
-  { label: 'Avg. Internship Duration', value: '10.2', suffix: ' Weeks', delta: '5%', down: true, bg: null, icon: clockIcon },
-  { label: 'Conversion to Hire', value: '24%', delta: '15%', bg: cyanBadgeBg, icon: medalIcon },
+  { label: 'Average Rating', value: '4.5', suffix: '/5', delta: '10%', bg: ratingBg, icon: ratingIcon },
+  { label: 'Intern Satisfaction', value: '92%', delta: '8%', bg: satisfactionBg, icon: satisfactionIcon },
+  { label: 'Task Completion Rate', value: '88%', delta: '18%', bg: completionBg, icon: completionIcon },
+  { label: 'Avg. Internship Duration', value: '10.2', suffix: ' Weeks', delta: '5%', down: true, bg: null, icon: durationIcon },
+  { label: 'Conversion to Hire', value: '24%', delta: '15%', bg: conversionBg, icon: conversionIcon },
 ]
 
 function StatusPill({ status }) {
   const cls = status.toLowerCase().replace(/\s+/g, '-')
   return <span className={`status-pill status-${cls}`}>{status}</span>
-}
-
-function SidebarIcon({ item }) {
-  return <img src={item.src} alt="" className="nav-icon-img" />
 }
 
 function BellIcon() {
@@ -140,98 +140,74 @@ function BellIcon() {
   )
 }
 
-function PerformanceIcon({ icon }) {
-  return <img src={icon} alt="" className="performance-icon-img" />
-}
-
-const DONUT_SIZE = 120
-const DONUT_HOLE = 72
-const DONUT_RADIUS = DONUT_SIZE / 2
-const DONUT_INNER_RADIUS = DONUT_HOLE / 2
-
-function polarPoint(radius, angle) {
-  const radians = (angle * Math.PI) / 180
-  return {
-    x: DONUT_RADIUS + radius * Math.cos(radians),
-    y: DONUT_RADIUS + radius * Math.sin(radians),
-  }
-}
-
-function createDonutPath(startAngle, endAngle) {
-  const outerStart = polarPoint(DONUT_RADIUS - 1, startAngle)
-  const outerEnd = polarPoint(DONUT_RADIUS - 1, endAngle)
-  const innerEnd = polarPoint(DONUT_INNER_RADIUS, endAngle)
-  const innerStart = polarPoint(DONUT_INNER_RADIUS, startAngle)
-  const largeArc = endAngle - startAngle > 180 ? 1 : 0
-
-  return [
-    `M ${outerStart.x} ${outerStart.y}`,
-    `A ${DONUT_RADIUS - 1} ${DONUT_RADIUS - 1} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y}`,
-    `L ${innerEnd.x} ${innerEnd.y}`,
-    `A ${DONUT_INNER_RADIUS} ${DONUT_INNER_RADIUS} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y}`,
-    'Z',
-  ].join(' ')
+function TrendArrow() {
+  return (
+    <svg
+      className="trend-arrow"
+      viewBox="0 0 8 12"
+      aria-hidden="true"
+    >
+      <path d="M4 11V1.5M.8 4.7 4 1.5l3.2 3.2" />
+    </svg>
+  )
 }
 
 function DonutChart({ data, total }) {
-  const [hoveredSegment, setHoveredSegment] = useState(null)
-  const dataTotal = data.reduce((sum, segment) => sum + segment.value, 0)
-  const segments = data.reduce((result, segment) => {
-    const startAngle = result.angle
-    const endAngle = startAngle + (segment.value / dataTotal) * 360
-    return {
-      angle: endAngle,
-      values: [
-        ...result.values,
-        {
-          ...segment,
-          path: createDonutPath(startAngle, endAngle),
-        },
-      ],
-    }
-  }, { angle: -90, values: [] }).values
+  const shouldAnimate = typeof window === 'undefined'
+    || !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
-    <div
-      className="donut-chart-wrap"
-      role="img"
-      aria-label={`${total} total: ${data.map((item) => `${item.label} ${item.pct}`).join(', ')}`}
-      onPointerLeave={() => setHoveredSegment(null)}
-    >
-      <svg className="donut-svg" viewBox={`0 0 ${DONUT_SIZE} ${DONUT_SIZE}`} aria-hidden="true">
-        {segments.map((segment) => (
-          <path
-            key={segment.label}
-            className="donut-segment"
-            d={segment.path}
-            fill={segment.color}
-            stroke="#FFFFFF"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-            vectorEffect="non-scaling-stroke"
-            onPointerEnter={() => setHoveredSegment(segment)}
+    <div className="donut-chart-wrap" role="img" aria-label={`${total} total`}>
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="label"
+            cx="50%"
+            cy="50%"
+            innerRadius={36}
+            outerRadius={60}
+            startAngle={90}
+            endAngle={-270}
+            paddingAngle={2}
+            stroke="none"
+            isAnimationActive={shouldAnimate}
+            animationBegin={120}
+            animationDuration={900}
+            animationEasing="ease-out"
+          >
+            {data.map((segment) => <Cell key={segment.label} fill={segment.color} />)}
+          </Pie>
+          <Tooltip
+            formatter={(value, name) => [`${value} applications`, name]}
+            contentStyle={{ borderRadius: 8, border: '1px solid #E7EAF0', fontSize: 11 }}
           />
-        ))}
-      </svg>
+        </PieChart>
+      </ResponsiveContainer>
       <div className="donut-center">
         <strong>{total}</strong>
         <span>TOTAL</span>
       </div>
-      {hoveredSegment && (
-        <div className="donut-tooltip" role="status">
-          <span className="donut-tooltip-dot" style={{ backgroundColor: hoveredSegment.color }} />
-          <span className="donut-tooltip-label">{hoveredSegment.label}</span>
-          <strong>{hoveredSegment.value} ({hoveredSegment.pct})</strong>
-        </div>
-      )}
     </div>
   )
 }
 
-export default function CompanyDashboard() {
+export function CompanyDashboard() {
   const [activeNav, setActiveNav] = useState('dashboard')
   const [companyMenuOpen, setCompanyMenuOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [visibleSeries, setVisibleSeries] = useState({
+    active: true,
+    completed: true,
+  })
+
+  const toggleSeries = (series) => {
+    setVisibleSeries((current) => ({
+      ...current,
+      [series]: !current[series],
+    }))
+  }
 
   return (
     <div className="dash-root">
@@ -240,7 +216,6 @@ export default function CompanyDashboard() {
           <strong>InternMS</strong>
           <span>Internship Management System</span>
         </div>
-        <div className="sidebar-divider" aria-hidden="true" />
         <nav className="dash-nav">
           {NAV_ITEMS.map((item) => (
             <button
@@ -250,9 +225,11 @@ export default function CompanyDashboard() {
                 setActiveNav(item.key)
                 setSidebarOpen(false)
               }}
-              style={activeNav === item.key ? { backgroundImage: `url(${activeMenuBg})` } : undefined}
+              style={activeNav === item.key ? { backgroundImage: `url(${activeNavImage})` } : undefined}
             >
-              <span className="nav-icon"><SidebarIcon item={item} /></span>
+              <span className="nav-icon">
+                <img src={item.src} alt="" className="nav-icon-img" />
+              </span>
               <span className="nav-label">{item.label}</span>
             </button>
           ))}
@@ -304,7 +281,7 @@ export default function CompanyDashboard() {
               onClick={() => setCompanyMenuOpen((open) => !open)}
             >
               <img
-                src={menuChevron}
+                src={menuArrowIcon}
                 alt=""
                 className={`company-chevron ${companyMenuOpen ? 'company-chevron-open' : ''}`}
               />
@@ -331,8 +308,11 @@ export default function CompanyDashboard() {
                     <span className="dstat-delta dstat-delta-muted">{card.delta}</span>
                   ) : (
                     <span className="dstat-delta">
-                      <span className="dstat-change">↑ {card.delta}</span>
-                      <span className="dstat-context"> from last month</span>
+                      <span className="dstat-change">
+                        <TrendArrow />
+                        {card.delta}
+                      </span>
+                      <span className="dstat-context">from last month</span>
                     </span>
                   )}
                 </div>
@@ -344,7 +324,7 @@ export default function CompanyDashboard() {
             <div className="chart-card">
               <div className="chart-card-header">
                 <h3>Application Overview</h3>
-                <button className="month-pill" type="button">This Month <img src={filterIcon} alt="" /></button>
+                <button className="month-pill">This Month <img src={filterArrowIcon} alt="" /></button>
               </div>
               <div className="donut-block">
                 <DonutChart data={APPLICATION_SEGMENTS} total="56" />
@@ -358,29 +338,38 @@ export default function CompanyDashboard() {
                   ))}
                 </ul>
               </div>
-              <a className="card-link" href="#">View all application <img src={arrowIcon} alt="" /></a>
+              <a className="card-link" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
             </div>
 
-            <div className="chart-card internship-status-card">
+            <div className="chart-card">
               <div className="chart-card-header">
                 <h3>Internship Status</h3>
-                <button className="month-pill" type="button">This Month <img src={filterIcon} alt="" /></button>
+                <button className="month-pill">This Month <img src={filterArrowIcon} alt="" /></button>
               </div>
               <div className="line-content">
                 <div className="line-legend">
-                  <span className="legend-active">Active</span>
-                  <span className="legend-completed">Completed</span>
+                  <button
+                    type="button"
+                    className={`legend-active ${visibleSeries.active ? '' : 'legend-series-muted'}`}
+                    aria-pressed={visibleSeries.active}
+                    onClick={() => toggleSeries('active')}
+                  >
+                    Active
+                  </button>
+                  <button
+                    type="button"
+                    className={`legend-completed ${visibleSeries.completed ? '' : 'legend-series-muted'}`}
+                    aria-pressed={visibleSeries.completed}
+                    onClick={() => toggleSeries('completed')}
+                  >
+                    Completed
+                  </button>
                 </div>
                 <div className="line-chart-block">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart
-                      data={INTERNSHIP_STATUS_DATA}
-                      margin={{ top: 10, right: 20, bottom: 0, left: 2 }}
-                      accessibilityLayer
-                    >
+                    <LineChart data={INTERNSHIP_STATUS_DATA} margin={{ top: 8, right: 4, bottom: 0, left: 0 }}>
                     <XAxis
                       dataKey="date"
-                      interval={0}
                       tick={{ fill: '#475569', fontSize: 9, fontWeight: 500 }}
                       axisLine={{ stroke: '#E2E8F0', strokeWidth: 1 }}
                       tickLine={false}
@@ -388,18 +377,14 @@ export default function CompanyDashboard() {
                     />
                     <YAxis
                       width={36}
-                      domain={[0, 105]}
+                      domain={[0, 100]}
                       ticks={[0, 25, 50, 75, 100]}
-                      interval={0}
-                      allowDecimals={false}
                       tick={{ fill: '#334155', fontSize: 9, fontWeight: 600 }}
                       axisLine={{ stroke: '#E2E8F0', strokeWidth: 1 }}
                       tickLine={false}
                       tickMargin={9}
                     />
                     <Tooltip
-                      formatter={(value, name) => [Number(value), name]}
-                      labelFormatter={(date) => `${date}`}
                       cursor={{ stroke: '#CBD5E1', strokeWidth: 1, strokeDasharray: '4 4' }}
                       contentStyle={{
                         background: 'rgba(255, 255, 255, 0.98)',
@@ -423,39 +408,33 @@ export default function CompanyDashboard() {
                         padding: '1px 0',
                       }}
                     />
-                    <Line
+                    {visibleSeries.active && <Line
                       type="natural"
                       dataKey="active"
                       name="Active"
                       stroke="#2F6FED"
-                      strokeWidth={1.6}
+                      strokeWidth={1.8}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4, fill: '#2F6FED', strokeWidth: 0 }}
-                      activeDot={{ r: 5.5, fill: '#2F6FED', strokeWidth: 2, stroke: '#DBEAFE' }}
-                      isAnimationActive
-                      animationDuration={900}
-                      animationEasing="ease-out"
-                    />
-                    <Line
+                      dot={{ r: 4.5, fill: '#2F6FED', strokeWidth: 0 }}
+                      activeDot={{ r: 6, fill: '#2F6FED', strokeWidth: 2, stroke: '#DBEAFE' }}
+                    />}
+                    {visibleSeries.completed && <Line
                       type="natural"
                       dataKey="completed"
                       name="Completed"
-                      stroke="#2DBA98"
-                      strokeWidth={1.6}
+                      stroke="#24B98B"
+                      strokeWidth={1.8}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4, fill: '#2DBA98', strokeWidth: 0 }}
-                      activeDot={{ r: 5.5, fill: '#2DBA98', strokeWidth: 2, stroke: '#D1FAE5' }}
-                      isAnimationActive
-                      animationDuration={900}
-                      animationEasing="ease-out"
-                    />
+                      dot={{ r: 4.5, fill: '#24B98B', strokeWidth: 0 }}
+                      activeDot={{ r: 6, fill: '#24B98B', strokeWidth: 2, stroke: '#D1FAE5' }}
+                    />}
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
-              <a className="card-link" href="#">View full report <img src={arrowIcon} alt="" /></a>
+              <a className="card-link" href="#">View full report <img src={arrowRightIcon} alt="" /></a>
             </div>
 
             <div className="chart-card">
@@ -474,7 +453,7 @@ export default function CompanyDashboard() {
                   ))}
                 </ul>
               </div>
-              <a className="card-link" href="#">View department details <img src={arrowIcon} alt="" /></a>
+              <a className="card-link" href="#">View department details <img src={arrowRightIcon} alt="" /></a>
             </div>
           </section>
 
@@ -506,7 +485,7 @@ export default function CompanyDashboard() {
                   ))}
                 </tbody>
               </table>
-              <a className="card-link" href="#">View all application <img src={arrowIcon} alt="" /></a>
+              <a className="card-link" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
             </div>
 
             <div className="panel-card upcoming-events">
@@ -529,7 +508,7 @@ export default function CompanyDashboard() {
                   </li>
                 ))}
               </ul>
-              <a className="card-link" href="#">View all events <img src={arrowIcon} alt="" /></a>
+              <a className="card-link" href="#">View all events <img src={arrowRightIcon} alt="" /></a>
             </div>
 
             <div className="panel-card quick-actions">
@@ -541,7 +520,6 @@ export default function CompanyDashboard() {
                   <button
                     key={action.label}
                     className="quick-action-btn"
-                    type="button"
                   >
                     <img src={action.src} alt="" />
                     <span>{action.label}</span>
@@ -560,7 +538,7 @@ export default function CompanyDashboard() {
                     className="performance-icon-wrap"
                     style={item.bg ? { backgroundImage: `url(${item.bg})` } : { background: '#FDECD8' }}
                   >
-                    <PerformanceIcon icon={item.icon} />
+                    <img src={item.icon} alt="" className="performance-icon-img" />
                   </div>
                   <div className="performance-text">
                     <span className="performance-label">{item.label}</span>

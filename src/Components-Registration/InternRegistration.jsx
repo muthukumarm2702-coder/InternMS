@@ -173,19 +173,19 @@ const [errors, setErrors] = useState({});
             <p className='intern-subtitle'>Fill in the details below to create your professional account</p>
             <label className='register-label'>Registering as <span>*</span></label>
             <div className='register-type'>
-                <div className='register-box' onClick={()=> navigate("/HRregistration")}>
+                <div className='register-box' onClick={()=> navigate("/register/hr")}>
                     <img src={hr} alt=""/>
                     <p>HR</p>
                 </div>
-                <div className='register-box' onClick={()=> navigate("/MentorRegistration")}>
+                <div className='register-box' onClick={()=> navigate("/register/mentor")}>
                     <img src={mentor} alt=""/>
                     <p>Mentor</p>
                 </div>
                 <div className='register-box active'>
-                    <img src={intern} alt="" onClick={()=> navigate("/InternRegistration")}/>
+                    <img src={intern} alt="" onClick={()=> navigate("/register/intern")}/>
                     <p>Intern</p>
                 </div>
-                <div className='register-box' onClick={()=> navigate("/CompanyRegistration")}>   
+                <div className='register-box' onClick={()=> navigate("/register/company")}>
                 <img src={company} alt=""/>
                 <p>company</p>
                 </div>

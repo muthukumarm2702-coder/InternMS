@@ -175,7 +175,7 @@ export const LoginPage=()=> {
               <button
   type="button"
   className="create-link"
-  onClick={() => navigate("/HRregistration")}
+  onClick={() => navigate("/register/hr")}
 >
   Create Account
 </button>

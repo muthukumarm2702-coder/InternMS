@@ -32,7 +32,7 @@ export const Verificationcode = ()=> {
   }
 
   setError("");
-  navigate("/forgotpassword");
+  navigate("/forgot-password");
 };
 
 const handleChange = (e, index) => {
