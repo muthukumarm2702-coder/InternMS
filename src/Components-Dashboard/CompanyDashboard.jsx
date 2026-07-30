@@ -20,18 +20,14 @@ import documentsIcon from '../assets/dashboard/documents.png'
 import internshipsIcon from '../assets/dashboard/internships.png'
 import arrowRightIcon from '../assets/dashboard/arrow-right.png'
 import filterArrowIcon from '../assets/dashboard/filter-arrow.png'
-import applicationsStatIcon from '../assets/dashboard/stat-applications.png'
-import departmentsStatIcon from '../assets/dashboard/stat-departments.png'
-import completedStatIcon from '../assets/dashboard/stat-completed.png'
-import activeStatIcon from '../assets/dashboard/stat-active.png'
-import internsStatIcon from '../assets/dashboard/stat-interns.png'
+import applicationsStatIcon from '../assets/dashboard/applications-symbol.png'
+import departmentsStatIcon from '../assets/dashboard/departments-symbol.png'
+import completedStatIcon from '../assets/dashboard/completed-symbol.png'
+import activeStatIcon from '../assets/dashboard/active-symbol.png'
+import internsStatIcon from '../assets/dashboard/interns-symbol.png'
 import searchIcon from '../assets/dashboard/search.png'
 import menuArrowIcon from '../assets/dashboard/menu-arrow.png'
 import activeNavImage from '../assets/dashboard/nav-active.png'
-import conversionBg from '../assets/dashboard/bg-conversion.png'
-import completionBg from '../assets/dashboard/bg-completion.png'
-import satisfactionBg from '../assets/dashboard/bg-satisfaction.png'
-import ratingBg from '../assets/dashboard/bg-rating.png'
 import companyIcon from '../assets/dashboard/company.png'
 import homeIcon from '../assets/dashboard/home.png'
 import mentorsIcon from '../assets/dashboard/mentors.png'
@@ -46,6 +42,9 @@ import completionIcon from '../assets/dashboard/completion.png'
 import durationIcon from '../assets/dashboard/duration.png'
 import conversionIcon from '../assets/dashboard/conversion.png'
 import megaphoneIcon from '../assets/dashboard/megaphone.png'
+import bellIcon from '../assets/dashboard/bell.png'
+import trendUpIcon from '../assets/dashboard/trend-up.png'
+import trendDownIcon from '../assets/dashboard/trend-down.png'
 
 const NAV_ITEMS = [
   { key: 'dashboard', label: 'Dashboard', src: homeIcon },
@@ -71,20 +70,20 @@ const STAT_CARDS = [
 ]
 
 const APPLICATION_SEGMENTS = [
-  { label: 'Under Review', value: 20, pct: '36%', color: '#2F6FED' },
-  { label: 'Shortlisted', value: 14, pct: '25%', color: '#2DBA98' },
-  { label: 'Interview Scheduled', value: 10, pct: '18%', color: '#7246E8' },
-  { label: 'Offered', value: 10, pct: '8%', color: '#DCA052' },
-  { label: 'Rejected', value: 4, pct: '7%', color: '#C4CCD8' },
+  { label: 'Under Review', value: 20, pct: '36%', color: '#2673F4' },
+  { label: 'Shortlisted', value: 14, pct: '25%', color: '#27C090' },
+  { label: 'Interview Scheduled', value: 10, pct: '18%', color: '#794BE3' },
+  { label: 'Offered', value: 10, pct: '8%', color: '#DD9F5A' },
+  { label: 'Rejected', value: 4, pct: '7%', color: '#C5CDDB' },
 ]
 
 const DEPARTMENT_SEGMENTS = [
-  { label: 'Engineering', value: 42, pct: '33%', color: '#246BF2' },
-  { label: 'Marketing', value: 28, pct: '22%', color: '#2BB995' },
-  { label: 'Design', value: 20, pct: '16%', color: '#6840D9' },
-  { label: 'Product', value: 16, pct: '13%', color: '#E0A052' },
-  { label: 'HR', value: 10, pct: '8%', color: '#69B4DD' },
-  { label: 'Others', value: 12, pct: '8%', color: '#8C99AF' },
+  { label: 'Engineering', value: 42, pct: '33%', color: '#226BF1' },
+  { label: 'Marketing', value: 28, pct: '22%', color: '#2ABD99' },
+  { label: 'Design', value: 20, pct: '16%', color: '#6B3FD3' },
+  { label: 'Product', value: 16, pct: '13%', color: '#D49A58' },
+  { label: 'HR', value: 10, pct: '8%', color: '#6BB2DC' },
+  { label: 'Others', value: 12, pct: '8%', color: '#8C96AF' },
 ]
 
 const INTERNSHIP_STATUS_DATA = [
@@ -120,36 +119,20 @@ const QUICK_ACTIONS = [
 ]
 
 const PERFORMANCE_ITEMS = [
-  { label: 'Average Rating', value: '4.5', suffix: '/5', delta: '10%', bg: ratingBg, icon: ratingIcon },
-  { label: 'Intern Satisfaction', value: '92%', delta: '8%', bg: satisfactionBg, icon: satisfactionIcon },
-  { label: 'Task Completion Rate', value: '88%', delta: '18%', bg: completionBg, icon: completionIcon },
-  { label: 'Avg. Internship Duration', value: '10.2', suffix: ' Weeks', delta: '5%', down: true, bg: null, icon: durationIcon },
-  { label: 'Conversion to Hire', value: '24%', delta: '15%', bg: conversionBg, icon: conversionIcon },
+  { label: 'Average Rating', value: '4.5', suffix: '/5', delta: '10%', icon: ratingIcon },
+  { label: 'Intern Satisfaction', value: '92%', delta: '8%', icon: satisfactionIcon },
+  { label: 'Task Completion Rate', value: '88%', delta: '18%', icon: completionIcon },
+  { label: 'Avg. Internship Duration', value: '10.2', suffix: ' Weeks', delta: '5%', down: true, icon: durationIcon },
+  { label: 'Conversion to Hire', value: '24%', delta: '15%', icon: conversionIcon },
 ]
 
 function StatusPill({ status }) {
-  const cls = status.toLowerCase().replace(/\s+/g, '-')
-  return <span className={`status-pill status-${cls}`}>{status}</span>
-}
+  const cls = status
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+    .join('')
 
-function BellIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M18 9a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
-    </svg>
-  )
-}
-
-function TrendArrow() {
-  return (
-    <svg
-      className="trend-arrow"
-      viewBox="0 0 8 12"
-      aria-hidden="true"
-    >
-      <path d="M4 11V1.5M.8 4.7 4 1.5l3.2 3.2" />
-    </svg>
-  )
+  return <span className={`statusPill status${cls}`}>{status}</span>
 }
 
 function DonutChart({ data, total }) {
@@ -157,7 +140,7 @@ function DonutChart({ data, total }) {
     || !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
-    <div className="donut-chart-wrap" role="img" aria-label={`${total} total`}>
+    <div className="donutChartWrap" role="img" aria-label={`${total} total`}>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -181,11 +164,11 @@ function DonutChart({ data, total }) {
           </Pie>
           <Tooltip
             formatter={(value, name) => [`${value} applications`, name]}
-            contentStyle={{ borderRadius: 8, border: '1px solid #E7EAF0', fontSize: 11 }}
+            contentStyle={{ borderRadius: 8, border: '1px solid #E3E3E3', fontSize: 11 }}
           />
         </PieChart>
       </ResponsiveContainer>
-      <div className="donut-center">
+      <div className="donutCenter">
         <strong>{total}</strong>
         <span>TOTAL</span>
       </div>
@@ -210,44 +193,42 @@ export function CompanyDashboard() {
   }
 
   return (
-    <div className="dash-root">
-      <aside className={`dash-sidebar ${sidebarOpen ? 'dash-sidebar-open' : ''}`}>
-        <div className="dash-brand">
+    <div className="adminPage">
+      <aside className={`sidePanel ${sidebarOpen ? 'sidePanelOpen' : ''}`}>
+        <div className="brand">
           <strong>InternMS</strong>
           <span>Internship Management System</span>
         </div>
-        <nav className="dash-nav">
+        <nav className="sideNav">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.key}
-              className={`dash-nav-item ${activeNav === item.key ? 'dash-nav-item-active' : ''}`}
+              className={`navItem ${activeNav === item.key ? 'navItemActive' : ''}`}
               onClick={() => {
                 setActiveNav(item.key)
                 setSidebarOpen(false)
               }}
               style={activeNav === item.key ? { backgroundImage: `url(${activeNavImage})` } : undefined}
             >
-              <span className="nav-icon">
-                <img src={item.src} alt="" className="nav-icon-img" />
-              </span>
-              <span className="nav-label">{item.label}</span>
+              <img src={item.src} alt="" className="navIconImg" />
+              <span className="navLabel">{item.label}</span>
             </button>
           ))}
         </nav>
       </aside>
       {sidebarOpen && (
         <button
-          className="sidebar-backdrop"
+          className="sidebarBackdrop"
           type="button"
           aria-label="Close sidebar"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      <div className="dash-main">
-        <header className="dash-topbar">
+      <div className="mainArea">
+        <header className="topbar">
           <button
-            className="dash-hamburger dash-hamburger-dark"
+            className="menuBtn"
             type="button"
             aria-label="Toggle sidebar"
             aria-expanded={sidebarOpen}
@@ -255,26 +236,26 @@ export function CompanyDashboard() {
           >
             <span /><span /><span />
           </button>
-          <div className="dash-welcome">
+          <div className="welcomeText">
             <h1>Welcome back, Company Admin!</h1>
             <p>welcome back, Admin! Here's an overview of the internship ecosystem.</p>
           </div>
-          <div className="dash-search">
-            <img src={searchIcon} alt="" className="search-icon" />
+          <div className="searchBox">
+            <img src={searchIcon} alt="" className="searchIcon" />
             <input type="text" placeholder="Search anything...." />
           </div>
-          <button className="dash-bell" aria-label="Notifications">
-            <BellIcon />
-            <span className="bell-dot" />
+          <button className="bellBtn" aria-label="Notifications">
+            <img src={bellIcon} alt="" className="bellIcon" />
+            <span className="bellDot" />
           </button>
-          <div className="dash-company">
-            <img src={companyIcon} alt="" className="company-icon" />
-            <div className="company-text">
+          <div className="companyInfo">
+            <img src={companyIcon} alt="" className="companyIcon" />
+            <div className="companyText">
               <strong>Company</strong>
               <span>Tech Nova Solutions</span>
             </div>
             <button
-              className="company-chevron-button"
+              className="companyChevronButton"
               type="button"
               aria-label="Toggle company menu"
               aria-expanded={companyMenuOpen}
@@ -283,11 +264,11 @@ export function CompanyDashboard() {
               <img
                 src={menuArrowIcon}
                 alt=""
-                className={`company-chevron ${companyMenuOpen ? 'company-chevron-open' : ''}`}
+                className={`companyChevron ${companyMenuOpen ? 'companyChevronOpen' : ''}`}
               />
             </button>
             {companyMenuOpen && (
-              <div className="company-dropdown">
+              <div className="companyDropdown">
                 <button type="button">Company Profile</button>
                 <button type="button">Account Settings</button>
                 <button type="button">Sign Out</button>
@@ -296,23 +277,23 @@ export function CompanyDashboard() {
           </div>
         </header>
 
-        <main className="dash-content">
-          <section className="stat-cards-row">
+        <main className="contentArea">
+          <section className="statCardsRow">
             {STAT_CARDS.map((card) => (
-              <div className="dstat-card" key={card.label}>
-                <img src={card.badge} alt="" className="dstat-badge" />
-                <div className="dstat-text">
-                  <span className="dstat-label">{card.label}</span>
-                  <span className="dstat-value">{card.value}</span>
+              <div className="dstatCard" key={card.label}>
+                <img src={card.badge} alt="" className="dstatBadge" />
+                <div className="dstatText">
+                  <span className="dstatLabel">{card.label}</span>
+                  <span className="dstatValue">{card.value}</span>
                   {card.noDelta ? (
-                    <span className="dstat-delta dstat-delta-muted">{card.delta}</span>
+                    <span className="dstatDelta dstatDeltaMuted">{card.delta}</span>
                   ) : (
-                    <span className="dstat-delta">
-                      <span className="dstat-change">
-                        <TrendArrow />
+                    <span className="dstatDelta">
+                      <span className="dstatChange">
+                        <img src={trendUpIcon} alt="" className="trendIcon" />
                         {card.delta}
                       </span>
-                      <span className="dstat-context">from last month</span>
+                      <span className="dstatContext">from last month</span>
                     </span>
                   )}
                 </div>
@@ -320,37 +301,37 @@ export function CompanyDashboard() {
             ))}
           </section>
 
-          <section className="charts-row">
-            <div className="chart-card">
-              <div className="chart-card-header">
+          <section className="chartsRow">
+            <div className="chartCard">
+              <div className="chartCardHeader">
                 <h3>Application Overview</h3>
-                <button className="month-pill">This Month <img src={filterArrowIcon} alt="" /></button>
+                <button className="monthPill">This Month <img src={filterArrowIcon} alt="" /></button>
               </div>
-              <div className="donut-block">
+              <div className="donutBlock">
                 <DonutChart data={APPLICATION_SEGMENTS} total="56" />
-                <ul className="donut-legend">
+                <ul className="donutLegend">
                   {APPLICATION_SEGMENTS.map((seg) => (
                     <li key={seg.label}>
-                      <span className="legend-dot" style={{ background: seg.color }} />
-                      <span className="legend-label">{seg.label}</span>
-                      <span className="legend-value">{seg.value} ({seg.pct})</span>
+                      <span className="legendDot" style={{ background: seg.color }} />
+                      <span className="legendLabel">{seg.label}</span>
+                      <span className="legendValue">{seg.value} ({seg.pct})</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <a className="card-link" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
+              <a className="cardLink" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
             </div>
 
-            <div className="chart-card">
-              <div className="chart-card-header">
+            <div className="chartCard">
+              <div className="chartCardHeader">
                 <h3>Internship Status</h3>
-                <button className="month-pill">This Month <img src={filterArrowIcon} alt="" /></button>
+                <button className="monthPill">This Month <img src={filterArrowIcon} alt="" /></button>
               </div>
-              <div className="line-content">
-                <div className="line-legend">
+              <div className="lineContent">
+                <div className="lineLegend">
                   <button
                     type="button"
-                    className={`legend-active ${visibleSeries.active ? '' : 'legend-series-muted'}`}
+                    className={`legendActive ${visibleSeries.active ? '' : 'legendSeriesMuted'}`}
                     aria-pressed={visibleSeries.active}
                     onClick={() => toggleSeries('active')}
                   >
@@ -358,20 +339,25 @@ export function CompanyDashboard() {
                   </button>
                   <button
                     type="button"
-                    className={`legend-completed ${visibleSeries.completed ? '' : 'legend-series-muted'}`}
+                    className={`legendCompleted ${visibleSeries.completed ? '' : 'legendSeriesMuted'}`}
                     aria-pressed={visibleSeries.completed}
                     onClick={() => toggleSeries('completed')}
                   >
                     Completed
                   </button>
                 </div>
-                <div className="line-chart-block">
+                <div className="lineChartBlock">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={INTERNSHIP_STATUS_DATA} margin={{ top: 8, right: 4, bottom: 0, left: 0 }}>
                     <XAxis
                       dataKey="date"
-                      tick={{ fill: '#475569', fontSize: 9, fontWeight: 500 }}
-                      axisLine={{ stroke: '#E2E8F0', strokeWidth: 1 }}
+                      tick={{
+                        fill: '#000000',
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: 8,
+                        fontWeight: 400,
+                      }}
+                      axisLine={{ stroke: '#E3E3E3', strokeWidth: 1 }}
                       tickLine={false}
                       tickMargin={8}
                     />
@@ -379,25 +365,30 @@ export function CompanyDashboard() {
                       width={36}
                       domain={[0, 100]}
                       ticks={[0, 25, 50, 75, 100]}
-                      tick={{ fill: '#334155', fontSize: 9, fontWeight: 600 }}
-                      axisLine={{ stroke: '#E2E8F0', strokeWidth: 1 }}
+                      tick={{
+                        fill: '#000000',
+                        fontFamily: 'Montserrat, sans-serif',
+                        fontSize: 8,
+                        fontWeight: 400,
+                      }}
+                      axisLine={{ stroke: '#E3E3E3', strokeWidth: 1 }}
                       tickLine={false}
                       tickMargin={9}
                     />
                     <Tooltip
-                      cursor={{ stroke: '#CBD5E1', strokeWidth: 1, strokeDasharray: '4 4' }}
+                      cursor={{ stroke: '#C5CDDB', strokeWidth: 1, strokeDasharray: '4 4' }}
                       contentStyle={{
                         background: 'rgba(255, 255, 255, 0.98)',
-                        border: '1px solid #E2E8F0',
+                        border: '1px solid #E3E3E3',
                         borderRadius: 8,
                         boxShadow: '0 8px 24px rgba(15, 23, 42, 0.12)',
                         padding: '8px 10px',
-                        fontFamily: 'Inter, sans-serif',
+                        fontFamily: 'Montserrat, sans-serif',
                         fontSize: 10,
                         lineHeight: 1.4,
                       }}
                       labelStyle={{
-                        color: '#0F172A',
+                        color: '#000000',
                         fontSize: 10,
                         fontWeight: 700,
                         marginBottom: 4,
@@ -412,58 +403,58 @@ export function CompanyDashboard() {
                       type="natural"
                       dataKey="active"
                       name="Active"
-                      stroke="#2F6FED"
-                      strokeWidth={1.8}
+                      stroke="#296CF6"
+                      strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4.5, fill: '#2F6FED', strokeWidth: 0 }}
-                      activeDot={{ r: 6, fill: '#2F6FED', strokeWidth: 2, stroke: '#DBEAFE' }}
+                      dot={{ r: 4.5, fill: '#296CF6', strokeWidth: 0 }}
+                      activeDot={{ r: 6, fill: '#296CF6', strokeWidth: 2, stroke: '#EBF2FD' }}
                     />}
                     {visibleSeries.completed && <Line
                       type="natural"
                       dataKey="completed"
                       name="Completed"
-                      stroke="#24B98B"
-                      strokeWidth={1.8}
+                      stroke="#27C090"
+                      strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4.5, fill: '#24B98B', strokeWidth: 0 }}
-                      activeDot={{ r: 6, fill: '#24B98B', strokeWidth: 2, stroke: '#D1FAE5' }}
+                      dot={{ r: 4.5, fill: '#27C090', strokeWidth: 0 }}
+                      activeDot={{ r: 6, fill: '#27C090', strokeWidth: 2, stroke: '#E6F8F0' }}
                     />}
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
               </div>
-              <a className="card-link" href="#">View full report <img src={arrowRightIcon} alt="" /></a>
+              <a className="cardLink" href="#">View full report <img src={arrowRightIcon} alt="" /></a>
             </div>
 
-            <div className="chart-card">
-              <div className="chart-card-header">
+            <div className="chartCard">
+              <div className="chartCardHeader">
                 <h3>Internship Departments</h3>
               </div>
-              <div className="donut-block">
+              <div className="donutBlock">
                 <DonutChart data={DEPARTMENT_SEGMENTS} total="128" />
-                <ul className="donut-legend">
+                <ul className="donutLegend">
                   {DEPARTMENT_SEGMENTS.map((seg) => (
                     <li key={seg.label}>
-                      <span className="legend-dot" style={{ background: seg.color }} />
-                      <span className="legend-label">{seg.label}</span>
-                      <span className="legend-value">{seg.value} ({seg.pct})</span>
+                      <span className="legendDot" style={{ background: seg.color }} />
+                      <span className="legendLabel">{seg.label}</span>
+                      <span className="legendValue">{seg.value} ({seg.pct})</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <a className="card-link" href="#">View department details <img src={arrowRightIcon} alt="" /></a>
+              <a className="cardLink" href="#">View department details <img src={arrowRightIcon} alt="" /></a>
             </div>
           </section>
 
-          <section className="bottom-row">
-            <div className="panel-card recent-applications">
-              <div className="panel-header">
+          <section className="bottomRow">
+            <div className="panelCard recentApplications">
+              <div className="panelHeader">
                 <h3>Recent Applications</h3>
                 <a href="#">View all</a>
               </div>
-              <table className="applications-table">
+              <table className="applicationsTable">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -485,41 +476,41 @@ export function CompanyDashboard() {
                   ))}
                 </tbody>
               </table>
-              <a className="card-link" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
+              <a className="cardLink" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
             </div>
 
-            <div className="panel-card upcoming-events">
-              <div className="panel-header">
+            <div className="panelCard upcomingEvents">
+              <div className="panelHeader">
                 <h3>Upcoming Events</h3>
                 <a href="#">View Calendar</a>
               </div>
-              <ul className="events-list">
+              <ul className="eventsList">
                 {UPCOMING_EVENTS.map((ev) => (
                   <li key={ev.title}>
-                    <div className="event-date">
-                      <span className="event-month">{ev.month}</span>
-                      <span className="event-day">{ev.day}</span>
+                    <div className="eventDate">
+                      <span className="eventMonth">{ev.month}</span>
+                      <span className="eventDay">{ev.day}</span>
                     </div>
-                    <div className="event-info">
+                    <div className="eventInfo">
                       <strong>{ev.title}</strong>
                       <span>{ev.when}</span>
                     </div>
-                    <span className="event-badge">Upcoming</span>
+                    <span className="eventBadge">Upcoming</span>
                   </li>
                 ))}
               </ul>
-              <a className="card-link" href="#">View all events <img src={arrowRightIcon} alt="" /></a>
+              <a className="cardLink" href="#">View all events <img src={arrowRightIcon} alt="" /></a>
             </div>
 
-            <div className="panel-card quick-actions">
-              <div className="panel-header">
+            <div className="panelCard quickActions">
+              <div className="panelHeader">
                 <h3>Quick Actions</h3>
               </div>
-              <div className="quick-actions-grid">
+              <div className="quickActionsGrid">
                 {QUICK_ACTIONS.map((action) => (
                   <button
                     key={action.label}
-                    className="quick-action-btn"
+                    className="quickActionBtn"
                   >
                     <img src={action.src} alt="" />
                     <span>{action.label}</span>
@@ -529,29 +520,31 @@ export function CompanyDashboard() {
             </div>
           </section>
 
-          <section className="performance-row">
-            <h3 className="performance-title">Performance Overview</h3>
-            <div className="performance-grid">
+          <section className="performanceRow">
+            <h3 className="performanceTitle">Performance Overview</h3>
+            <div className="performanceGrid">
               {PERFORMANCE_ITEMS.map((item) => (
-                <div className="performance-item" key={item.label}>
-                  <div
-                    className="performance-icon-wrap"
-                    style={item.bg ? { backgroundImage: `url(${item.bg})` } : { background: '#FDECD8' }}
-                  >
-                    <img src={item.icon} alt="" className="performance-icon-img" />
+                <div className="performanceItem" key={item.label}>
+                  <div className="performanceIconWrap">
+                    <img src={item.icon} alt="" className="performanceIconImg" />
                   </div>
-                  <div className="performance-text">
-                    <span className="performance-label">{item.label}</span>
-                    <span className="performance-value">
+                  <div className="performanceText">
+                    <span className="performanceLabel">{item.label}</span>
+                    <span className="performanceValue">
                       {item.value}
-                      {item.suffix && <span className="performance-suffix">{item.suffix}</span>}
+                      {item.suffix && <span className="performanceSuffix">{item.suffix}</span>}
                     </span>
-                  <span className="performance-delta">
-                    <span className={item.down ? 'performance-change-down' : 'performance-change'}>
-                      {item.down ? '↓' : '↑'} {item.delta}
+                    <span className="performanceDelta">
+                      <span className={item.down ? 'performanceChangeDown' : 'performanceChange'}>
+                        <img
+                          src={item.down ? trendDownIcon : trendUpIcon}
+                          alt=""
+                          className="trendIcon"
+                        />
+                        {item.delta}
+                      </span>
+                      <span className="performanceContext"> from last month</span>
                     </span>
-                    <span className="performance-context"> from last month</span>
-                  </span>
                   </div>
                 </div>
               ))}
