@@ -135,6 +135,24 @@ function StatusPill({ status }) {
   return <span className={`statusPill status${cls}`}>{status}</span>
 }
 
+function MonthFilter() {
+  return (
+    <button className="monthPill" type="button">
+      This Month
+      <img src={filterArrowIcon} alt="" />
+    </button>
+  )
+}
+
+function CardLink({ children }) {
+  return (
+    <a className="cardLink" href="#">
+      {children}
+      <img src={arrowRightIcon} alt="" />
+    </a>
+  )
+}
+
 function DonutChart({ data, total }) {
   const shouldAnimate = typeof window === 'undefined'
     || !window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -305,7 +323,7 @@ export function CompanyDashboard() {
             <div className="chartCard">
               <div className="chartCardHeader">
                 <h3>Application Overview</h3>
-                <button className="monthPill">This Month <img src={filterArrowIcon} alt="" /></button>
+                <MonthFilter />
               </div>
               <div className="donutBlock">
                 <DonutChart data={APPLICATION_SEGMENTS} total="56" />
@@ -319,13 +337,13 @@ export function CompanyDashboard() {
                   ))}
                 </ul>
               </div>
-              <a className="cardLink" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
+              <CardLink>View all application</CardLink>
             </div>
 
             <div className="chartCard">
               <div className="chartCardHeader">
                 <h3>Internship Status</h3>
-                <button className="monthPill">This Month <img src={filterArrowIcon} alt="" /></button>
+                <MonthFilter />
               </div>
               <div className="lineContent">
                 <div className="lineLegend">
@@ -425,7 +443,7 @@ export function CompanyDashboard() {
                   </ResponsiveContainer>
                 </div>
               </div>
-              <a className="cardLink" href="#">View full report <img src={arrowRightIcon} alt="" /></a>
+              <CardLink>View full report</CardLink>
             </div>
 
             <div className="chartCard">
@@ -444,7 +462,7 @@ export function CompanyDashboard() {
                   ))}
                 </ul>
               </div>
-              <a className="cardLink" href="#">View department details <img src={arrowRightIcon} alt="" /></a>
+              <CardLink>View department details</CardLink>
             </div>
           </section>
 
@@ -476,7 +494,7 @@ export function CompanyDashboard() {
                   ))}
                 </tbody>
               </table>
-              <a className="cardLink" href="#">View all application <img src={arrowRightIcon} alt="" /></a>
+              <CardLink>View all application</CardLink>
             </div>
 
             <div className="panelCard upcomingEvents">
@@ -499,7 +517,7 @@ export function CompanyDashboard() {
                   </li>
                 ))}
               </ul>
-              <a className="cardLink" href="#">View all events <img src={arrowRightIcon} alt="" /></a>
+              <CardLink>View all events</CardLink>
             </div>
 
             <div className="panelCard quickActions">
