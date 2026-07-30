@@ -10,7 +10,7 @@ import mentor from "../assets/registration/mentor.png"
 import eyeClose from "../assets/registration/eyeclose.png";
 import inputcompany from "../assets/registration/inputcompany.png"
 
-export const HRregistration = ()=> {
+export const HRRegistration = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 const [showConfirmPassword, setShowConfirmPassword] = useState(false);
