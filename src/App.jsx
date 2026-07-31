@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { LandingPage } from './Components-LandingPage/LandingPage'
 import { LoginPage } from './Components-Login/LoginPage'
 import { TwoStepverification as TwoStepVerification } from './Components-Login/TwoStepverification'
@@ -15,24 +15,71 @@ import { AdminRegistration } from './Components-Registration/AdminRegistration'
 import { CompanyDashboard } from './Components-Dashboard/CompanyDashboard'
 
 const routes = [
-  { path: '/', element: <LandingPage /> },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/twostepverification', element: <TwoStepVerification /> },
-  { path: '/verificationcode', element: <VerificationCode /> },
-  { path: '/forgot-password', element: <ForgotPassword /> },
-  { path: '/forgot-password/verify', element: <ForgotPasswordOtp /> },
-  { path: '/reset-password', element: <ResetPassword /> },
-  { path: '/reset-password/success', element: <ResetPasswordSuccess /> },
-  { path: '/register/hr', element: <HRRegistration /> },
-  { path: '/register/mentor', element: <MentorRegistration /> },
-  { path: '/register/intern', element: <InternRegistration /> },
-  { path: '/register/company', element: <CompanyRegistration /> },
-  { path: '/register/admin', element: <AdminRegistration /> },
-  { path: '/dashboard', element: <CompanyDashboard /> },
+  {
+    path: '/',
+    element: <LandingPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/twostepverification',
+    element: <TwoStepVerification />,
+  },
+  {
+    path: '/verificationcode',
+    element: <VerificationCode />,
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPassword />,
+  },
+  {
+    path: '/forgot-password/verify',
+    element: <ForgotPasswordOtp />,
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPassword />,
+  },
+  {
+    path: '/reset-password/success',
+    element: <ResetPasswordSuccess />,
+  },
+  {
+    path: '/register/hr',
+    element: <HRRegistration />,
+  },
+  {
+    path: '/register/mentor',
+    element: <MentorRegistration />,
+  },
+  {
+    path: '/register/intern',
+    element: <InternRegistration />,
+  },
+  {
+    path: '/register/company',
+    element: <CompanyRegistration />,
+  },
+  {
+    path: '/register/admin',
+    element: <AdminRegistration />,
+  },
+  {
+    path: '/dashboard',
+    element: <CompanyDashboard />,
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />,
+  },
 ]
 
-const router = createBrowserRouter(routes, { basename: '/ims' })
-
+const router = createBrowserRouter(routes, {
+  basename: '/ims',
+})
 export default function App() {
   return <RouterProvider router={router} />
 }

@@ -27,7 +27,6 @@ import activeStatIcon from '../assets/dashboard/active-symbol.png'
 import internsStatIcon from '../assets/dashboard/interns-symbol.png'
 import searchIcon from '../assets/dashboard/search.png'
 import menuArrowIcon from '../assets/dashboard/menu-arrow.png'
-import activeNavImage from '../assets/dashboard/nav-active.png'
 import companyIcon from '../assets/dashboard/company.png'
 import homeIcon from '../assets/dashboard/home.png'
 import mentorsIcon from '../assets/dashboard/mentors.png'
@@ -154,8 +153,15 @@ function CardLink({ children }) {
 }
 
 function DonutChart({ data, total }) {
-  const shouldAnimate = typeof window === 'undefined'
-    || !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  let shouldAnimate = true
+ if (typeof window !== 'undefined') {
+    const reducedMotionSetting = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    )
+    if (reducedMotionSetting.matches) {
+      shouldAnimate = false
+    }
+  }
 
   return (
     <div className="donutChartWrap" role="img" aria-label={`${total} total`}>
@@ -194,7 +200,7 @@ function DonutChart({ data, total }) {
   )
 }
 
-export function CompanyDashboard() {
+export const CompanyDashboard = () => {
   const [activeNav, setActiveNav] = useState('dashboard')
   const [companyMenuOpen, setCompanyMenuOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -226,7 +232,6 @@ export function CompanyDashboard() {
                 setActiveNav(item.key)
                 setSidebarOpen(false)
               }}
-              style={activeNav === item.key ? { backgroundImage: `url(${activeNavImage})` } : undefined}
             >
               <img src={item.src} alt="" className="navIconImg" />
               <span className="navLabel">{item.label}</span>
@@ -264,7 +269,7 @@ export function CompanyDashboard() {
           </div>
           <button className="bellBtn" aria-label="Notifications">
             <img src={bellIcon} alt="" className="bellIcon" />
-            <span className="bellDot" />
+            <span className="bellDot" aria-hidden="true" />
           </button>
           <div className="companyInfo">
             <img src={companyIcon} alt="" className="companyIcon" />

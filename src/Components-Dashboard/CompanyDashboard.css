@@ -233,33 +233,34 @@
 
 .bellBtn {
   position: relative;
-  width: 28px;
-  height: 34px;
+  box-sizing: border-box;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 44px;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .bellIcon {
+  position: absolute;
+  top: 10px;
+  left: 6px;
   display: block;
-  width: 20px;
+  width: 16px;
   height: 20px;
-  object-fit: contain;
 }
 
 .bellDot {
   position: absolute;
-  top: 5px;
-  right: 3px;
+  top: 7px;
+  left: 20px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #FF0000;
-  border: 1.5px solid #C5DFFF;
+  background-color: #BA1A1A;
+  pointer-events: none;
 }
 
 .companyInfo {
@@ -517,6 +518,9 @@
 }
 
 .monthPill {
+  box-sizing: border-box;
+  width: 108px;
+  height: 23px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -525,16 +529,19 @@
   letter-spacing: 0%;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  white-space: nowrap;
   background: #F6F7F9;
   border: none;
-  border-radius: 100px;
-  padding: 4px 9px;
+  border-radius: 10px;
+  padding: 0 9px;
   color: #51607F;
   cursor: pointer;
 }
 
 .monthPill img {
+  flex-shrink: 0;
   width: 8px;
   height: 5px;
 }
@@ -658,12 +665,14 @@
 }
 
 .chartCard .cardLink {
+  box-sizing: border-box;
   width: 100%;
   justify-content: center;
-  border-top: 1px solid #F6F7F9;
-  padding-top: 8px;
+  border-top: 0.5px solid rgba(217, 217, 217, 0.5);
+  padding-top: 10px;
   margin-top: 8px;
   align-self: end;
+  line-height: 12px;
 }
 
 .lineContent {
@@ -742,9 +751,18 @@
   box-shadow: 0 1px 4px rgba(15, 30, 60, 0.25);
 }
 
+.recentApplications,
 .upcomingEvents,
 .quickActions {
-  padding: 12px 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.recentApplications,
+.upcomingEvents,
+.quickActions {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .panelHeader {
@@ -810,8 +828,13 @@
 
 .recentApplications .cardLink,
 .upcomingEvents .cardLink {
+  box-sizing: border-box;
+  width: 100%;
   margin: auto auto 0;
-  padding-top: 6px;
+  padding-top: 10px;
+  border-top: 0.5px solid rgba(217, 217, 217, 0.5);
+  justify-content: center;
+  line-height: 12px;
 }
 
 .statusPill {
@@ -1206,6 +1229,47 @@
   }
 }
 
+@media (min-width: 901px) and (max-width: 1200px) {
+  .topbar {
+    padding-right: 20px;
+    gap: 10px;
+  }
+
+  .welcomeText {
+    min-width: 180px;
+  }
+
+  .searchBox {
+    flex-basis: 200px;
+    width: 200px;
+  }
+
+  .statCardsRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .chartsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chartsRow > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .bottomRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bottomRow > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .panelCard {
+    height: auto;
+    min-height: 200px;
+  }
+}
+
 @media (max-width: 900px) {
   html:has(.adminPage),
   body:has(.adminPage),
@@ -1307,6 +1371,16 @@
     padding: 9px 12px;
   }
 
+  .welcomeText {
+    min-width: 0;
+  }
+
+  .welcomeText h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .welcomeText p,
   .companyText span {
     display: none;
@@ -1368,6 +1442,43 @@
 
   .performanceItem:last-child {
     border-bottom: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  }
+
+  .searchBox {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .companyText {
+    display: none;
+  }
+
+  .chartCardHeader {
+    gap: 8px;
+  }
+
+  .chartCardHeader h3 {
+    min-width: 0;
+  }
+
+  .monthPill {
+    flex: 0 0 108px;
+  }
+
+  .donutBlock {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+
+  .quickActionsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
   }
 }
 
