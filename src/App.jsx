@@ -71,10 +71,6 @@ const routes = [
     path: '/dashboard',
     element: <CompanyDashboard />,
   },
-  {
-    path: '*',
-    element: <Navigate to="/" replace />,
-  },
 ]
 
 const router = createBrowserRouter(routes, {
