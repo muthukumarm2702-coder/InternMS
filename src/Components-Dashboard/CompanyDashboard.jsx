@@ -173,8 +173,8 @@ function DonutChart({ data, total }) {
             nameKey="label"
             cx="50%"
             cy="50%"
-            innerRadius={36}
-            outerRadius={60}
+            innerRadius="60%"
+            outerRadius="100%"
             startAngle={90}
             endAngle={-270}
             paddingAngle={2}
@@ -371,7 +371,7 @@ export const CompanyDashboard = () => {
                 </div>
                 <div className="lineChartBlock">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={INTERNSHIP_STATUS_DATA} margin={{ top: 8, right: 4, bottom: 0, left: 0 }}>
+                    <LineChart data={INTERNSHIP_STATUS_DATA} margin={{ top: 10, right: 7, bottom: 0, left: 0 }}>
                     <XAxis
                       dataKey="date"
                       tick={{
@@ -383,9 +383,10 @@ export const CompanyDashboard = () => {
                       axisLine={{ stroke: '#E3E3E3', strokeWidth: 1 }}
                       tickLine={false}
                       tickMargin={8}
+                      height={18}
                     />
                     <YAxis
-                      width={36}
+                      width={29}
                       domain={[0, 100]}
                       ticks={[0, 25, 50, 75, 100]}
                       tick={{
@@ -430,7 +431,7 @@ export const CompanyDashboard = () => {
                       strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4.5, fill: '#296CF6', strokeWidth: 0 }}
+                      dot={{ r: 5, fill: '#296CF6', strokeWidth: 0 }}
                       activeDot={{ r: 6, fill: '#296CF6', strokeWidth: 2, stroke: '#EBF2FD' }}
                     />}
                     {visibleSeries.completed && <Line
@@ -441,7 +442,7 @@ export const CompanyDashboard = () => {
                       strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 4.5, fill: '#27C090', strokeWidth: 0 }}
+                      dot={{ r: 5, fill: '#27C090', strokeWidth: 0 }}
                       activeDot={{ r: 6, fill: '#27C090', strokeWidth: 2, stroke: '#E6F8F0' }}
                     />}
                     </LineChart>
