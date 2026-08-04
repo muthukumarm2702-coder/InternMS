@@ -41,9 +41,19 @@
     border: 0;
   }
 
-  .sidePanel {
+  .adminPage .sidePanel {
     position: relative;
     height: 100%;
+    padding-top: 0;
+  }
+
+  .adminPage .brand {
+    height: 90px;
+    padding: 29px 0 0 24px;
+  }
+
+  .adminPage .sideNav {
+    margin-top: 16px;
   }
 
   .mainArea {
@@ -80,20 +90,21 @@
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   padding: 8px 24px 14px;
 }
 
 .brand strong {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 27px;
   color: #ffffff;
 }
 
 .brand span {
-  font-size: 9px;
-  line-height: 1.2;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
   color: #EBF2FD;
 }
 
@@ -1280,11 +1291,18 @@
 @media (min-width: 1400px) {
   .sidePanel {
     width: 278px;
+    padding-top: 0;
+  }
+
+  .adminPage .brand {
+    width: 220px;
+    height: 90px;
+    padding: 29px 0 0 33px;
   }
 
   .sideNav {
     gap: 7.45px;
-    margin-top: 29px;
+    margin-top: 16px;
     padding: 0 14px 0 12px;
   }
 
@@ -1565,8 +1583,9 @@
   }
 
   .quickActionsGrid {
-    grid-template-columns: repeat(3, 96px);
-    grid-template-rows: repeat(2, 87px);
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     column-gap: 10px;
     row-gap: 11px;
   }
