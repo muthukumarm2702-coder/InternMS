@@ -8,6 +8,13 @@
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+.adminPage,
+.adminPage *,
+.adminPage *::before,
+.adminPage *::after {
+  box-sizing: border-box;
+}
+
 .adminPage button,
 .adminPage input {
   font: inherit;
@@ -43,6 +50,11 @@
     min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  .topbar {
+    position: relative;
+    top: auto;
   }
 
   .contentArea {
@@ -386,8 +398,10 @@
 }
 
 .cardLink img {
-  width: 12px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  object-fit: contain;
 }
 
 .statCardsRow {
@@ -460,20 +474,28 @@
   display: flex;
   align-items: center;
   gap: 3px;
+  height: 12px;
 }
 
 .dstatChange {
   display: inline-flex;
   align-items: center;
   gap: 1px;
-  height: 15px;
+  height: 12px;
+  line-height: 12px;
   color: #228C5A;
   font-weight: 400;
+  font-size: inherit;
 }
 
 .dstatContext {
   color: #000000;
   font-weight: 400;
+  font-size: inherit;
+  line-height: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .dstatDeltaMuted {
@@ -738,7 +760,12 @@
   width: 100%;
   min-width: 0;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.lineChartBlock .recharts-wrapper,
+.lineChartBlock .recharts-surface {
+  overflow: visible;
 }
 
 .bottomRow {
@@ -1120,6 +1147,7 @@
   display: inline-flex;
   align-items: center;
   gap: 3px;
+  height: 15px;
 }
 
 .lineLegend button:hover {
@@ -1142,6 +1170,8 @@
   align-items: center;
   gap: 1px;
   height: 15px;
+  font-size: inherit;
+  line-height: 15px;
 }
 
 .performanceItem:nth-child(1) .performanceIconWrap { background: #E8F0FE; }
@@ -1156,13 +1186,15 @@
   align-items: center;
   gap: 1px;
   height: 15px;
+  font-size: inherit;
+  line-height: 15px;
 }
 
 .trendIcon {
   display: block;
-  width: 7px;
-  height: 11px;
-  flex: 0 0 7px;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
   margin: 0;
   object-fit: contain;
   object-position: center;
@@ -1170,6 +1202,11 @@
 
 .performanceContext {
   color: #434654;
+  display: inline-flex;
+  align-items: center;
+  height: 15px;
+  font-size: inherit;
+  line-height: 15px;
 }
 
 @media (min-width: 901px) {
@@ -1246,9 +1283,9 @@
   }
 
   .sideNav {
-    gap: 8px;
+    gap: 7.45px;
     margin-top: 29px;
-    padding: 0 13px;
+    padding: 0 14px 0 12px;
   }
 
   .navItem {
@@ -1323,7 +1360,13 @@
   .dstatCard {
     height: 105px;
     min-height: 105px;
+    padding: 0 12px;
+    gap: 11px;
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  .dstatText {
+    transform: translateY(6px);
   }
 
   .dstatBadge {
@@ -1344,6 +1387,7 @@
   .dstatDelta {
     font-size: 10px;
     line-height: 12px;
+    margin-left: -2px;
   }
 
   .chartsRow {
@@ -1604,6 +1648,7 @@
   }
 
   .performanceGrid {
+    grid-template-columns: 212px 226px 229px 221px minmax(0, 1fr);
     height: 113px;
     align-items: stretch;
   }
@@ -1612,6 +1657,10 @@
     position: relative;
     height: 113px;
     border-right: 0;
+  }
+
+  .performanceItem:nth-child(4) {
+    gap: 8px;
   }
 
   .performanceItem:not(:last-child)::after {
@@ -1652,6 +1701,11 @@
   .performanceLabel {
     top: 14px;
     line-height: 16px;
+  }
+
+  .performanceItem:nth-child(4) .performanceLabel {
+    font-size: 11px;
+    line-height: 13px;
   }
 
   .performanceValue {
@@ -1703,6 +1757,20 @@
   .panelCard {
     height: auto;
     min-height: 200px;
+  }
+
+  .performanceRow {
+    height: auto;
+    min-height: 0;
+  }
+
+  .performanceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+
+  .performanceItem {
+    min-height: 64px;
   }
 }
 
@@ -1799,6 +1867,16 @@
 
   .performanceGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 10px;
+  }
+
+  .performanceRow {
+    height: auto;
+    min-height: 0;
+  }
+
+  .performanceItem {
+    min-height: 64px;
   }
 }
 

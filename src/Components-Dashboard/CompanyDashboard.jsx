@@ -86,12 +86,28 @@ const DEPARTMENT_SEGMENTS = [
 ]
 
 const INTERNSHIP_STATUS_DATA = [
-  { date: 'May 06', active: 35, completed: 5 },
-  { date: 'May 16', active: 45, completed: 14 },
-  { date: 'May 26', active: 58, completed: 25 },
-  { date: 'Jun 26', active: 84, completed: 36 },
-  { date: 'Jul 06', active: 100, completed: 38 },
+  { date: 'May 06', active: 35, completed: 5, showPoint: true },
+  { date: '_may-curve', active: 38, completed: 8 },
+  { date: 'May 16', active: 45, completed: 14, showPoint: true },
+  { date: '_mid-curve', active: 42, completed: 16 },
+  { date: 'May 26', active: 58, completed: 25, showPoint: true },
+  { date: '_june-curve', active: 63, completed: 22 },
+  { date: 'Jun 26', active: 84, completed: 36, showPoint: true },
+  { date: '_july-curve', active: 87, completed: 43 },
+  { date: 'Jul 06', active: 100, completed: 38, showPoint: true },
 ]
+
+function ChartPoint({ cx, cy, payload, color }) {
+  if (!payload.showPoint) {
+    return null
+  }
+
+  return <circle cx={cx} cy={cy} r="5" fill={color} />
+}
+
+function formatChartDate(date) {
+  return date.startsWith('_') ? '' : date
+}
 
 const RECENT_APPLICATIONS = [
   { name: 'Aarav Patel', position: 'UI/UX Design Intern', department: 'Design', appliedOn: 'May 26, 2026', status: 'Under Review' },
@@ -374,6 +390,7 @@ export const CompanyDashboard = () => {
                     <LineChart data={INTERNSHIP_STATUS_DATA} margin={{ top: 10, right: 7, bottom: 0, left: 0 }}>
                     <XAxis
                       dataKey="date"
+                      tickFormatter={formatChartDate}
                       tick={{
                         fill: '#000000',
                         fontFamily: 'Montserrat, sans-serif',
@@ -431,7 +448,7 @@ export const CompanyDashboard = () => {
                       strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 5, fill: '#296CF6', strokeWidth: 0 }}
+                      dot={<ChartPoint color="#296CF6" />}
                       activeDot={{ r: 6, fill: '#296CF6', strokeWidth: 2, stroke: '#EBF2FD' }}
                     />}
                     {visibleSeries.completed && <Line
@@ -442,7 +459,8 @@ export const CompanyDashboard = () => {
                       strokeWidth={1}
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      dot={{ r: 5, fill: '#27C090', strokeWidth: 0 }}
+                      dot={<ChartPoint color="#27C090" />}
+
                       activeDot={{ r: 6, fill: '#27C090', strokeWidth: 2, stroke: '#E6F8F0' }}
                     />}
                     </LineChart>
@@ -567,7 +585,7 @@ export const CompanyDashboard = () => {
                         />
                         {item.delta}
                       </span>
-                      <span className="performanceContext"> from last month</span>
+                      <span className="performanceContext">from last month</span>
                     </span>
                   </div>
                 </div>
