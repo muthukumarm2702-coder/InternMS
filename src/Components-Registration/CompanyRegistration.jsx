@@ -175,6 +175,8 @@ const handleSubmit = (e) => {
       Fill in the details to register your organization and start hiring.
     </p>
 
+    <label className="register-label">Registering as <span>*</span></label>
+
     <div className="register-type">
 
       <div className="register-box" onClick={() => navigate("/register/hr")}>
@@ -420,7 +422,7 @@ const handleSubmit = (e) => {
 </button>
 
       <div className="login-link">
-        Already have an account? <span onClick={() => navigate("/login")}>Log in</span>
+        Already have an account? <span onClick={() => navigate("/company-hr-login")}>Log in</span>
       </div>
 
     </form>

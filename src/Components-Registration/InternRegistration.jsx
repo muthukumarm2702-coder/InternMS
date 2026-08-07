@@ -48,14 +48,12 @@ const [errors, setErrors] = useState({});
   const validate = () => {
   let newErrors = {};
 
-  // Full Name
   if (!form.fullName.trim()) {
     newErrors.fullName = "Full Name is required";
   } else if (!/^[A-Za-z ]+$/.test(form.fullName)) {
     newErrors.fullName = "Only letters are allowed";
   }
 
-  // Email
   if (!form.email.trim()) {
     newErrors.email = "Email Address is required";
   } else if (
@@ -64,39 +62,32 @@ const [errors, setErrors] = useState({});
     newErrors.email = "Enter a valid email address";
   }
 
-  // Phone
   if (!form.phone.trim()) {
     newErrors.phone = "Phone Number is required";
   } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
     newErrors.phone = "Enter a valid 10-digit mobile number";
   }
 
-  // Date of Birth
   if (!form.dob) {
     newErrors.dob = "Date of Birth is required";
   }
 
-  // College
   if (!form.college.trim()) {
     newErrors.college = "College Name is required";
   }
 
-  // Field of Study
   if (!form.field) {
     newErrors.field = "Field of Study is required";
   }
 
-  // Graduation Year
   if (!form.graduationYear) {
     newErrors.graduationYear = "Graduation Year is required";
   }
 
-  // Resume
   if (!form.resume) {
     newErrors.resume = "Resume is required";
   }
 
-  // Password
   if (!form.password) {
     newErrors.password = "Password is required";
   } else if (
@@ -106,14 +97,12 @@ const [errors, setErrors] = useState({});
       "Minimum 8 characters, uppercase, lowercase, number & special character";
   }
 
-  // Confirm Password
   if (!form.confirmPassword) {
     newErrors.confirmPassword = "Confirm Password is required";
   } else if (form.password !== form.confirmPassword) {
     newErrors.confirmPassword = "Passwords do not match";
   }
 
-  // Terms
   if (!form.agree) {
     newErrors.agree = "Please accept Terms & Privacy Policy";
   }

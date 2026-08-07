@@ -364,7 +364,7 @@ const handleSubmit = (e) => {
 
     <p className="signin-text">
       Already have an account?
-      <span onClick={() => navigate("/login")}> Sign in</span>
+      <span onClick={() => navigate("/company-hr-login")}> Sign in</span>
     </p>
 </form>
   </div>

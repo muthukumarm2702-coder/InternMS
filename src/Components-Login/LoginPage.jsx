@@ -113,7 +113,7 @@ export const LoginPage=()=> {
            <button
   type="button"
   className="forgot-link"
-  onClick={() => navigate("/twostepverification")}
+  onClick={() => navigate("/forgot-password")}
 >
   Forgot Password?
 </button>
@@ -166,7 +166,7 @@ export const LoginPage=()=> {
           <div className="google-align">
             <button type="button" className="google-btn">
               <img src={google} alt="google" />
-              Google
+              Sign in with Google
             </button>
 
             <p className="create">

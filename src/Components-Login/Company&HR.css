@@ -1,0 +1,429 @@
+.companyHrPage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  font-family: Inter,Arial,sans-serif;
+  color: #191c1e;
+  background: #fff;
+}
+
+.companyHrLeftPanel {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  background-color: #101bb7;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.companyHrLeftContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(40px, 6.25vh, 64px) clamp(40px, 5vw, 64px) clamp(32px, 5.5vh, 56px);
+}
+
+.companyHrBrand {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.companyHrLeftMain {
+  margin: auto 0;
+}
+
+.companyHrLeftTitle {
+  margin: 0 0 20px;
+  font-size: 48px;
+  line-height: 1.13;
+  letter-spacing: -1.4px
+}
+
+.companyHrLeftSubtitle {
+  margin: 0;
+  color: rgba(255,255,255,.8);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.companyHrStats {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 5.6vw, 72px);
+  margin-bottom: clamp(42px, 7vh, 72px);
+}
+
+.companyHrStat {
+  display: flex;
+  flex-direction: column
+}
+
+.companyHrStat strong {
+  font-size: 20px;
+  line-height: 1.2
+}
+
+.companyHrStat span {
+  margin-top: 3px;
+  color: rgba(255,255,255,.65);
+  font-size: 9px;
+  letter-spacing: .7px;
+  text-transform: uppercase
+}
+
+.companyHrCopyright {
+  margin: 0;
+  color: rgba(255,255,255,.45);
+  font-size: 10px;
+}
+
+.companyHrRightPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(48px, 7.8vh, 80px) clamp(40px, 5vw, 64px) clamp(36px, 5.5vh, 56px);
+  background: #fff;
+}
+
+.companyHrFormContainer {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 440px);
+  margin: 0 auto;
+}
+
+.companyHrFormHeader {
+  margin: 0 0 72px;
+}
+
+.companyHrFormTitle {
+  margin: 0 0 8px;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -.5px
+}
+
+.companyHrFormSubtitle {
+  margin: 0;
+  color: #64636f;
+  font-size: 13px;
+  line-height: normal;
+}
+
+.companyHrForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.companyHrField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.companyHrField label,
+.companyHrLabelRow label {
+  color: #191c1e;
+  font-size: 11px;
+  line-height: normal;
+  font-weight: 600
+}
+
+.companyHrLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.companyHrForgotLink,
+.companyHrCreateLink {
+  color: #2212bb;
+  font-size: 10px;
+  text-decoration: none
+}
+
+.companyHrForgotLink:hover,
+.companyHrCreateLink:hover {
+  text-decoration: underline
+}
+
+.companyHrInputWrap {
+  position: relative;
+  display: flex;
+  align-items: center
+}
+
+.companyHrInputIcon {
+  position: absolute;
+  left: 14px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: .7;
+  pointer-events: none
+}
+
+.companyHrInputWrap input {
+  width: 100%;
+  height: 40px;
+  padding: 0 42px;
+  border: 1px solid #d4d4e1;
+  border-radius: 6px;
+  outline: none;
+  color: #191c1e;
+  font: 12px Inter, sans-serif;
+}
+
+.companyHrInputWrap input::placeholder {
+  color: #b8b7c8
+}
+
+.companyHrInputWrap input:focus {
+  border-color: #3525cd;
+  box-shadow: 0 0 0 3px rgba(53,37,205,.1)
+}
+
+.companyHrField.hasError input {
+  border-color: #c62828
+}
+
+.companyHrError {
+  margin: -3px 0 0;
+  color: #c62828;
+  font-size: 11px
+}
+
+.companyHrEyeButton {
+  position: absolute;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  cursor: pointer
+}
+
+.companyHrEyeButton img {
+  width: 16px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .75
+}
+
+.companyHrCheckboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #464555;
+  font-size: 11px;
+  cursor: pointer
+}
+
+.companyHrCheckboxLabel input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #3525cd
+}
+
+.companyHrSigninButton,
+.companyHrGoogleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 42px;
+  border-radius: 6px;
+  font: 500 13px Inter, sans-serif;
+  cursor: pointer
+}
+
+.companyHrSigninButton {
+  gap: 9px;
+  border: 0;
+  color: #fff;
+  background: #2c18ce;
+  box-shadow: 0 5px 10px rgba(44,24,206,.18)
+}
+
+.companyHrSigninButton:hover {
+  background: #2110b5
+}
+
+.companyHrSigninButton img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain
+}
+
+.companyHrOrDivider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 38px 0;
+  color: #b8b7c8;
+  font-size: 9px;
+  letter-spacing: .5px;
+  text-transform: uppercase
+}
+
+.companyHrOrDivider:before,
+.companyHrOrDivider:after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e7e7ed
+}
+
+.companyHrGoogleButton {
+  gap: 10px;
+  border: 1px solid #d4d4e1;
+  color: #191c1e;
+  background: #fff
+}
+
+.companyHrGoogleButton:hover {
+  background: #f8f8fb
+}
+
+.companyHrGoogleButton img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain
+}
+
+.companyHrCreateText {
+  margin: 88px 0 0;
+  text-align: center;
+  color: #575663;
+  font-size: 11px;
+}
+
+.companyHrFooterLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.companyHrFooterLinks a {
+  color: #575663;
+  font-size: 9px;
+  text-decoration: none
+}
+
+.companyHrFooterLinks span {
+  color: #c4c3cf;
+  font-size: 9px;
+}
+
+@media (max-height: 780px) and (min-width: 761px) {
+  .companyHrFormHeader {
+    margin-bottom: 34px;
+  }
+
+  .companyHrOrDivider {
+    margin: 20px 0;
+  }
+
+  .companyHrCreateText {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 760px) {
+  .companyHrPage {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+
+  .companyHrLeftPanel,
+  .companyHrLeftContent {
+    min-height: 300px;
+  }
+
+  .companyHrLeftContent {
+    padding: 30px 28px;
+  }
+
+  .companyHrLeftMain {
+    margin: 44px 0;
+  }
+
+  .companyHrLeftTitle {
+    font-size: 34px;
+  }
+
+  .companyHrLeftSubtitle br {
+    display: none;
+  }
+
+  .companyHrStats {
+    margin: 0 0 24px;
+  }
+
+  .companyHrCopyright {
+    position: absolute;
+    right: 28px;
+    bottom: 31px;
+  }
+
+  .companyHrRightPanel {
+    padding: 48px 24px 36px;
+  }
+
+  .companyHrFormContainer {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+
+  .companyHrFormHeader {
+    margin: 0 0 38px;
+  }
+
+  .companyHrCreateText {
+    margin-top: 52px;
+  }
+
+  .companyHrFooterLinks {
+    margin-top: 32px;
+  }
+}
+
+
+@media (max-width: 430px) {
+  .companyHrLeftPanel,
+  .companyHrLeftContent {
+    min-height: 250px;
+  }
+
+  .companyHrLeftSubtitle,
+  .companyHrStats,
+  .companyHrCopyright {
+    display: none;
+  }
+
+  .companyHrLeftMain {
+    margin: auto 0 8px;
+  }
+}
+

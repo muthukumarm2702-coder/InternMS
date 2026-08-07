@@ -1,6 +1,7 @@
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { LandingPage } from './Components-LandingPage/LandingPage'
 import { LoginPage } from './Components-Login/LoginPage'
+import CompanyAndHRLogin from './Components-Login/Company&HR'
 import { TwoStepverification as TwoStepVerification } from './Components-Login/TwoStepverification'
 import { Verificationcode as VerificationCode } from './Components-Login/Verificationcode'
 import { ForgotPassword } from './Components-Login/ForgotPassword'
@@ -22,6 +23,10 @@ const routes = [
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/company-hr-login',
+    element: <CompanyAndHRLogin />,
   },
   {
     path: '/twostepverification',
